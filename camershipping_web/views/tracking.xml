@@ -1,0 +1,70 @@
+<odoo>
+    <template id="tracking" >
+        <t t-call="website.layout">
+            <body>
+
+            <!-- Page Header Start -->
+               <div class="main-image">
+                   <div class="container py-5">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown" style="font-weight: bold">TRACKING</h1>
+                        <div class="mx-auto" style="width: 100%; max-width: 600px;">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Enter your Expedition Reference"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary px-3">Track</button>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+
+                <!-- Contact Us Section -->
+                <section class="contact-us" style=" padding: 70px 0px;background: #48794e;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="section-title">
+                                    <h2 style="  color: #ffffff;font-size: 30px;font-weight: normal;text-transform: uppercase;letter-spacing: 8px;
+                                        border-bottom: 5px solid #af8070;padding-bottom: 10px;display: inline-block;">Follow your Article</h2>
+                                    <p style="  color: #e8e8e8;margin-bottom: 30px;"><b>Enter your reference number on the search box </b> and allows us to give you the article position</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <form action="/" class="mb-4 mb-lg-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="reference" id="subject" placeholder="Reference Number" style="background: #fafafa;"/>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" name="type" class="form-control" id="name" placeholder="Type" style="background: #fafafa;"/>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="date" class="form-control" name="date" id="date" placeholder="Date" style="background: #fafafa;"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="ville" id="subject" placeholder="Ville" style="background: #fafafa;"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="position" placeholder="Position" style="background: #fafafa;min-height: 188px;max-width: 100%;"></textarea>
+                                    </div>
+<!--                                    <button type="submit" class="btn btn-light">Update</button>-->
+                                </form>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <div class="map" style="    overflow: hidden;border-radius: 4px;">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.879213075034!2d9.683175514760006!3d4.0450598970584855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x106112fb7c8ce2ff%3A0x8c9931f93f64f7fa!2sGuichet%20Unique%20Du%20Commerce%20Ext%C3%A9rieur!5e0!3m2!1sfr!2scm!4v1656602795164!5m2!1sfr!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- End Contact Us Section -->
+            </body>
+        </t>
+    </template>
+</odoo>
+

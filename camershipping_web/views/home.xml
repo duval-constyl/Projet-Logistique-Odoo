@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="home" >
+        <t t-call="website.layout">
+            <body>
+                <div class="wrapper">
+                    <div class="content">
+                        <h5>Transport &amp; Logistics Solution</h5>
+                        <h1>#1 Place For Your <span>Transport</span> Solution</h1>
+                        <p class="par">Our logistic solutions include a wide range of load planning, shipment tracking and freight services.</p>
+
+                            <button class="cn"><a href="#">READ MORE</a></button>
+                    </div>
+                </div>
+
+                <!--ABOUT SECTION-->
+                <section id="about">
+                    <div class="title-text">
+                        <p>ABOUT US</p>
+                        <h1>Why Choose Us</h1>
+                    </div>
+                    <div class="about-box">
+                        <div class="abouts">
+                            <h1>Experienced Staff</h1>
+                            <div class="about-desc">
+                                <div class="about-icon"><i class="far fa-clock"></i></div>
+                                 <div class="about-text">
+                                     <p>We presently utilize more than 600 prepared logisticians and nearby business people, in an extending overall system of areas. Since we are promoted by private value,
+                                            we’ve developed rapidly and are a non-resource-based association that shares a solitary vision.</p>
+                                 </div>
+                            </div>
+                            <h1>Affrodable Cost</h1>
+                            <div class="about-desc">
+                                <div class="about-icon"><i class="far fa-clock"></i></div>
+                                 <div class="about-text">
+                                     <p>We presently utilize more than 600 prepared logisticians and nearby business people, in an extending overall system of areas. Since we are promoted by private value,
+                                            we’ve developed rapidly and are a non-resource-based association that shares a solitary vision.</p>
+                                 </div>
+                            </div>
+                             <h1>Delivery Time</h1>
+                            <div class="about-desc">
+                                <div class="about-icon"><i class="far fa-clock"></i></div>
+                                 <div class="about-text">
+                                     <p>We presently utilize more than 600 prepared logisticians and nearby business people, in an extending overall system of areas. Since we are promoted by private value,
+                                            we’ve developed rapidly and are a non-resource-based association that shares a solitary vision.</p>
+                                 </div>
+                            </div>
+                        </div>
+                         <div class="about-img">
+                            <img src="/camershipping_web/static/src/img/about.jpg" style="width: 100%; height: 100%"/>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!--SERVICE SECTION-->
+                <section id="service">
+                    <div class="title-text">
+                        <p>OURS SERVICES</p>
+                        <h1>We Provide Better</h1>
+                    </div>
+                    <div class="services-box">
+                        <div class="single-service">
+                            <img src="/camershipping_web/static/src/img/air.jfif"/>
+                            <div class="overlay"></div>
+                            <div class="service-desc">
+                                <h3>AIR TRANSPORT</h3>
+                                <hr/>
+                                <p class="service-p">
+                                    We provide full supply chain management package including cost effective and fast sea freight.
+                                    You can also combine this package with other means of transportation.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-service">
+                            <img src="/camershipping_web/static/src/img/road.jpg"/>
+                            <div class="overlay"></div>
+                            <div class="service-desc">
+                                <h3>ROAD TRANSPORT</h3>
+                                <hr/>
+                                <p class="service-p">We have a wide experience in overland industry specific
+                                    logistic solutions like pharmaceutical logistics, retail and automotive logistics by train or road.</p>
+                            </div>
+                        </div>
+                        <div class="single-service">
+                            <img src="/camershipping_web/static/src/img/service-2.jpg"/>
+                            <div class="overlay"></div>
+                            <div class="service-desc">
+                                <h3>SHIP TRANSPORT</h3>
+                                <hr/>
+                                <p class="service-p">
+                                    We bring your goods safely to worldwide destinations with our great sea fright services.
+                                    We offer LLC and FLC shipments that are fast and effective with no delays.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-service">
+                            <img src="/camershipping_web/static/src/img/ware.jpg"/>
+                            <div class="overlay"></div>
+                            <div class="service-desc">
+                                <h3>WARE HOUSE</h3>
+                                <hr/>
+                                <p class="service-p">
+                                    Trucking offers intelligent warehouse solution. Lower your storage and good maintenance by using our modern and intelligent warehouses.
+                                    You can see all locations on location page.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!--free quote start-->
+                <section id="free" class="pt-5 pb-5 bg-dark position-relative" style="min-height:100vh; src:/cs_shipping_web/static/src/img/carousel-1.jpg; background-size: cover;">
+                    <div class="bg-overlay"></div>
+                        <div class="container pt-5 pb-5 position-relative">
+                          <div class="row d-flex justify-content-between pt-lg-5 align-items-center">
+                            <div class="col-xl-5 col-lg-6 col-md-7 text-center text-lg-left mb-5 mb-lg-0">
+                              <h1 class="display-3 font-weight-bold text-white aos-init aos-animate" data-aos="fade-up">Request A Free Qoute</h1>
+                              <div class="my-4 aos-init" data-aos="fade-up">
+                                <p class="lead text-white">Easily create website layouts, templates, wireframes, mockups in less time and zero coding!</p>
+                              </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-headphones fa-2x flex-shrink-0 bg-success p-3 text-white"></i>
+                                    <div class="ps-4">
+                                        <h6>Call for any query!</h6>
+                                        <h3 class="text-success m-0">+237 699820301</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+<!--                                <t t-if="submitted">-->
+<!--                                    <h3 class="alert alert-success mt16 mb16">-->
+<!--                                        <i class="fa fa-thumbs-up"/>-->
+<!--                                        We are taking your note into consideration-->
+<!--                                    </h3>-->
+<!--                                </t>-->
+                              <div class="row justify-content-center">
+                                <div class="col-xl-8 col-md-10">
+                                  <form class="position-relative d-block aos-init aos-animate" data-aos="fade-up">
+                                       <input type="hidden" name="csrf_token" t-att-value="request.csrf_token() "/>
+                                    <div class="form-group">
+                                      <label class="text-white" for="course-name-1">Your Name</label>
+                                      <input name="name" id="course-name-1" type="text" class="form-control form-control-lg" placeholder="Type your name"/>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="text-white" for="course-email-1">Email Address</label>
+                                      <input name="mail" id="course-email-1" type="email" class="form-control form-control-lg" placeholder="example@gmail.com"/>
+                                    </div>
+                                      <div class="form-group">
+                                          <label class="text-white" for="course-phone-1">Phone Number</label>
+                                          <input name="phone" id="course-phone-1" type="phone" class="form-control form-control-lg"/>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="text-white" for="course-description-1">Note</label>
+                                          <textarea name="note" id="course-description-1" type="Text" class="form-control form-control-lg" placeholder="Special Note"/>
+                                      </div>
+                                    <div class="form-group text-center">
+                                      <button class="btn btn-lg btn-success btn-block mb-2" type="submit">Submit</button>
+                                      <small class="text-white">You’ll treate your demande and send you a feed back.</small>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                <!--free quote end-->
+
+
+                <!--TEAM SECTION-->
+                <section id="team">
+                     <div class="container">
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="title-text">
+                                    <p>OURS TEAM</p>
+                                    <h1>Our personnel with whom we work</h1>
+                                </div>
+                             </div>
+                             <div class="col-md-3" id="team-content">
+                                 <div class="single-team">
+                                     <div class="team-img">
+                                         <img src="/camershipping_web/static/src/img/team-1.jpg"/>
+                                     </div>
+                                     <div class="team-content">
+                                         <div class="team-info">
+                                             <h3>Jeff Pop</h3>
+                                             <p>Chief Executive</p>
+                                         </div>
+                                         <p class="team-text">Trucking offers intelligent warehouse solution. Lower your storage and good maintenance by using our modern and intelligent warehouses.
+                                           </p>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-3" id="team-content">
+                                 <div class="single-team">
+                                     <div class="team-img">
+                                         <img src="/camershipping_web/static/src/img/team-2.jpg"/>
+                                     </div>
+                                     <div class="team-content">
+                                         <div class="team-info">
+                                             <h3>Jeff Pop</h3>
+                                             <p>Chief Executive</p>
+                                         </div>
+                                         <p class="team-text">Trucking offers intelligent warehouse solution. Lower your storage and good maintenance by using our modern and intelligent warehouses.
+                                       </p>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-3" id="team-content">
+                                 <div class="single-team">
+                                     <div class="team-img">
+                                         <img src="/camershipping_web/static/src/img/team-3.jpg"/>
+                                     </div>
+                                     <div class="team-content">
+                                         <div class="team-info">
+                                             <h3>Jeff Pop</h3>
+                                             <p>Chief Executive</p>
+                                         </div>
+                                         <p class="team-text">Trucking offers intelligent warehouse solution. Lower your storage and good maintenance by using our modern and intelligent warehouses.
+                                            </p>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-3" id="team-content">
+                                 <div class="single-team">
+                                     <div class="team-img">
+                                         <img src="/camershipping_web/static/src/img/team-4.jpg"/>
+                                     </div>
+                                     <div class="team-content">
+                                         <div class="team-info">
+                                             <h3>Jeff Pop</h3>
+                                             <p>Chief Executive</p>
+                                         </div>
+                                         <p class="team-text">Trucking offers intelligent warehouse solution. Lower your storage and good maintenance by using our modern and intelligent warehouses.
+                                         </p>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                </section>
+
+                <!-- section blog-->
+                <section id="blog">
+                    <div class="blog_content">
+                        <div class="title-text">
+                            <p>OURS BLOG</p>
+                            <h1>Recent News</h1>
+                        </div>
+                        <div class="blogs">
+                            <t t-foreach="blogs" t-as="blog">
+                               <div class="blog">
+                                    <div class="image-section">
+                                        <span t-field="blog.image" t-options="{'widget': 'image', 'class': 'mx-auto d-block img-thumbnail'}" style=" width: 100%; height: auto;"/>
+                                    </div>
+                                    <div class="blog_article">
+                                        <h4><t t-esc="blog.title"/></h4>
+                                        <p><t t-esc="blog.description"/></p>
+                                    </div>
+                                    <div class="blog-view">
+                                        <a href="#" class="button">Read More</a>
+                                    </div>
+                                    <div class="blog_date">
+                                        <p>Posted on <t t-esc="blog.date"/></p>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+
+
+            <!--TESTIMONIAL SECTION-->
+                <section id="testimonial">
+                    <div class="title-text">
+                            <p>Testimonial</p>
+                            <h1>What ours clients say</h1>
+                    </div>
+                    <div class="testimonial-row">
+                        <div class="testimonial-col">
+                            <div class="clients">
+                                <img src="/camershipping_web/static/src/img/testimonial-1.jpg"/>
+                                <div class="clients-info">
+                                    <h4>Particia Joelle<i class="fa fa-twitter"></i></h4>
+                                    <small><a href="#">@patricia</a></small>
+                                </div>
+                            </div>
+                            <p>
+                                 The shipping process with this crew was a pleasurable experience! They did all in time and with no safety incidents. Thank you so much guys!
+                            </p>
+                        </div>
+                        <div class="testimonial-col">
+                            <div class="clients">
+                                <img src="/camershipping_web/static/src/img/testimonial-2.jpg"/>
+                                <div class="clients-info">
+                                    <h4>Steve Tom <i class="fa fa-twitter"></i></h4>
+                                    <small><a href="#">@steve</a></small>
+                                </div>
+                            </div>
+                            <p>
+                                 The shipping process with this crew was a pleasurable experience! They did all in time and with no safety incidents. Thank you so much guys!
+                            </p>
+                        </div>
+                        <div class="testimonial-col">
+                            <div class="clients">
+                                <img src="/camershipping_web/static/src/img/testimonial-3.jpg"/>
+                                <div class="clients-info">
+                                    <h4>Duval Fotso<i class="fa fa-twitter"></i></h4>
+                                    <small><a href="#">@duval_con</a></small>
+                                </div>
+                            </div>
+                            <p>
+                                 The shipping process with this crew was a pleasurable experience! They did all in time and with no safety incidents. Thank you so much guys!
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <script>
+                    var scroll = new SmoothScroll('a[href*="#"]', {
+                    speed: 1500,
+                    speedAsDuration: true
+                    });
+                </script>
+            </body>
+        </t>
+    </template>
+</odoo>

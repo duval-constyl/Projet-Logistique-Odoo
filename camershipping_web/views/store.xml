@@ -1,0 +1,263 @@
+<odoo>
+    <template id="store" >
+        <t t-call="website.layout">
+            <body>
+
+            <!-- Page Header Start -->
+               <div class="main-images">
+                   <div class="container py-5">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown" style="font-weight: bold">STORE</h1>
+                        <div class="mx-auto" style="width: 100%; max-width: 600px;">
+<!--                            <div class="input-group">-->
+<!--                                <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Enter your Expedition Reference"/>-->
+<!--                                <div class="input-group-append">-->
+<!--                                    <button class="btn btn-primary px-3">STORE</button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                   </div>
+               </div>
+                <div class="small-container cart-page">
+                    <table>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+
+                        <tr class="product-rows">
+                        </tr>
+
+                    </table>
+
+                    <div class="totals-prices">
+                        <table>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td>30000 Fcfa</td>
+                            </tr>
+                            <tr>
+                                <td>Tax</td>
+                                <td>20%</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td class="total-price">0 Fcfa</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+<!--                     <div class="cart-modal-overlay">-->
+<!--                         <div class="cart-modal">-->
+<!--                             <i id="close-btn" class="fas fa-times"></i>-->
+<!--                             <h1 class="cart-is-empty">Cart is empty</h1>-->
+
+<!--                             <div class="product-rows">-->
+<!--                             </div>-->
+<!--                             <div class="total">-->
+<!--                                 <h1 class="cart-total">TOTAL</h1>-->
+<!--                                 <span class="total-price">$0</span>-->
+<!--                                 <button class="purchase-btn">PURCHASE</button>-->
+<!--                             </div>-->
+<!--                         </div>-->
+<!--                     </div>-->
+
+                <section class="sellerContent">
+                    <div class="container-fluid">
+                       <div class="row">
+                           <div class="col-md-3">
+                                <div class="leftSidebar">
+                                    <div class="accordion">
+                                        <h5 class="category"> Product Category</h5>
+                                         <div class="accordion" id="accordionExample">
+                                              <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingOne">
+                                                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Staples
+                                                  </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                  <div class="accordion-body">
+                                                      <ul class="categorySublist">
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingTwo">
+                                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Shoes
+                                                  </button>
+                                                </h2>
+                                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                  <div class="accordion-body">
+                                                      <ul class="categorySublist">
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingThree">
+                                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    Clothes
+                                                  </button>
+                                                </h2>
+                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                                  <div class="accordion-body">
+                                                      <ul class="categorySublist">
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                          <li class="categoryItem">
+                                                              <a href="#">Dal/Pulses</a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                         </div>
+                                    </div>
+                                </div>
+                           </div>
+
+
+
+                           <div class="col-md-9">
+                                <div class="deliveryBanner">
+                                    <div class="row" id="banners" style="background:#bebebe; border: 3px solid; padding: 10px 0px 10px;">
+                                        <div class="col-md-4">
+                                            <div class="media d-flex  align-items-center">
+                                                <img src="/camershipping_web/static/src/img/deliveryman.png" style=" width: 40px;background: #bebebe;"/>
+                                                <div class="media-body">
+                                                    <h6>Home Delivery above 15000Fcfa</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-4">
+                                            <div class="media d-flex align-items-center">
+                                                <img src="/camershipping_web/static/src/img/marker.png" style=" width: 40px;background: #bebebe;"/>
+                                                <div class="media-body">
+                                                    <h6>Delivery Location</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-4">
+                                            <div class="media d-flex  align-items-center">
+                                                <img src="/camershipping_web/static/src/img/clock.png" style=" width: 40px;background: #bebebe;"/>
+                                                <div class="media-body">
+                                                    <h6>Delivery between 9AM to 7PM</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row productThumb">
+                                        <div class="col-md-12">
+                                            <h3 style="font-size: 28px;right: 35%;text-align: center; margin-top: 35px">All Products</h3>
+                                             <hr style=" background: orange;height: 2px; border: 0; margin: 15px auto; width: 60%; border: 1px solid"/>
+                                        </div>
+
+                                        <!--Product card-->
+                                         <div class="product-view">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="row">
+                                                                <t t-foreach="articles" t-as="article">
+                                                                <div class="col-md-4" id="card" style=" margin-bottom: 10px;">
+                                                                        <div class="card-1 card">
+                                                                       <h6 class="product-name" style="text-transform: uppercase;"><t t-esc="article.name"/></h6>
+                                                                              <figure class="product-image" style="gradient: overlay;width: 200px;height: 200px; display: block;">
+                                                                                    <span class="product-image" t-field="article.image" t-options="{'widget': 'image', 'class': 'mx-auto d-block img-thumbnail'}" style="max-width: 100%; display: block;"/>
+                                                                                </figure>
+                                                                            <button class="add-to-cart">Add to cart</button>
+                                                                         <h4><t t-esc="article.description"/></h4>
+                                                                          <span class="product-price"><t t-esc="article.sale_price"/>Fcfa</span>
+                                                                    </div>
+                                                                </div>
+                                                                 </t>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                         </div>
+                                    </div>
+
+
+                                </div>
+                           </div>
+
+                             <nav aria-label="Page navigation example" style=" margin-top: 35px">
+                                 <ul class="pagination justify-content-center">
+                                     <li class="page-item ">
+                                         <a class="page-link"  href="#">Previous</a>
+                                     </li>
+                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                     <li class="page-item">
+                                         <a class="page-link" href="#">Next</a>
+                                     </li>
+                                 </ul>
+                             </nav>
+                       </div>
+                    </div>
+                </section>
+
+                <section id="partner">
+                    <div class="partner_content">
+                        <div class="title-text">
+                            <p>OURS BLOG</p>
+                            <h1>Recent News</h1>
+                        </div>
+                        <div class="partners">
+                            <div class="partner">
+<!--                                <div class="slide"><img src="/camershipping_web/static/src/img/adidas.png" alt="logo"/></div>-->
+                                <div class="slide"><img src="/camershipping_web/static/src/img/logo-coca-cola.png" alt="logo"/></div>
+                                <div class="slide"><img src="/camershipping_web/static/src/img/logo-godrej.png" alt="logo"/></div>
+                                <div class="slide"><img src="/camershipping_web/static/src/img/logo-oppo.png" alt="logo"/></div>
+                                <div class="slide"><img src="/camershipping_web/static/src/img/logo-paypal.png" alt="logo"/></div>
+                                <div class="slide"><img src="/camershipping_web/static/src/img/logo-philips.png" alt="logo"/></div>
+                                <div class="slide"><img src="/camershipping_web/static/src/img/logo-white.png" alt="logo"/></div>
+<!--                                <div class="slide"><img src="/camershipping_web/static/src/img/nike.png" alt="logo"/></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </body>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="cart-shop" >
+        <t t-call="website.layout">
+            <div class="small-container cart-page">
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+
+                    <tr class="product-rows">
+                    </tr>
+
+                </table>
+
+                <div class="totals-prices">
+                    <table>
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>30000 Fcfa</td>
+                        </tr>
+                        <tr>
+                            <td>Tax</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td class="total-price">0 Fcfa</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

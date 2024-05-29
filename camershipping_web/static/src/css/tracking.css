@@ -1,0 +1,7 @@
+.main-image{
+    position: relative;
+    background:linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/carousel-1.jpg) no-repeat center;
+    background-size: cover;
+    height: 400px;
+    overflow: hidden;
+}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="login" >
+        <t t-call="website.layout">
+            <t t-if="submitted">
+                <h3 class="alert alert-success mt16 mb16">
+                    <i class="fa fa-thumbs-up"/>
+                    Client successfully registered
+                </h3>
+            </t>
+
+
+                <section id="logins" class="vh-180 bg-image" style="background-image: url('/camershipping_web/static/src/img/carousel-2.jpg');">
+                      <div class="mask d-flex align-items-center h-80 gradient-custom-3">
+                        <div class="container h-80">
+                          <div class="row d-flex justify-content-center align-items-center h-80">
+                            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                              <div class="card" style="border-radius: 15px;">
+                                <div class="card-body p-5">
+                                  <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                                  <form method='POST'>
+                                      <input type="hidden" name="csrf_token" t-att-value="request.csrf_token() "/>
+                                      <div class="row">
+                                            <div class="col-md-6 mb-4 pb-2">
+
+                                              <div class="form-outline">
+                                                   <label class="form-label" for="form3Examplev2">First name</label>
+                                                <input type="text" id="form3Examplev2" class="form-control form-control-lg" name="name"/>
+                                              </div>
+
+                                            </div>
+                                            <div class="col-md-6 mb-4 pb-2">
+                                              <div class="form-outline">
+                                                  <label class="form-label" for="form3Examplev3">Last name</label>
+                                                <input type="text" id="form3Examplev3" class="form-control form-control-lg" name="surname"/>
+                                              </div>
+
+                                            </div>
+                                      </div>
+
+                                    <div class="form-outline mb-4">
+                                         <label class="form-label" for="form3Example3cg">Your Email</label>
+                                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="mail"/>
+                                    </div>
+
+                                      <div class="form-outline mb-4">
+                                          <label class="form-label" for="form3Example3cg">Phone number</label>
+                                      <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="telephone"/>
+                                    </div>
+
+                                      <div class="row">
+                                            <div class="col-md-6 mb-4 pb-2">
+
+                                              <div class="form-outline">
+                                                   <label class="form-label" for="form3Examplev2">Adresse</label>
+                                                <input type="text" id="form3Examplev2" class="form-control form-control-lg" name="adresse"/>
+                                              </div>
+
+                                            </div>
+                                            <div class="col-md-6 mb-4 pb-2">
+                                              <div class="form-outline">
+                                                  <label for="country_id" class="control-label" > Select Country</label>
+                                                  <select name="country" class="form-control link-style">
+                                                      <t t-foreach="countries" t-as="countrie">
+                                                          <option t-esc="countrie.name" t-att-value="countrie.id" />
+                                                      </t>
+                                                  </select>
+                                              </div>
+                                            </div>
+                                      </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example4cg">Password</label>
+                                      <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password"/>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                         <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                      <input type="password" id="form3Example4cdg" class="form-control form-control-lg" name="confirm_password"/>
+                                    </div>
+
+                                    <div class="form-check d-flex justify-content-center mb-5" >
+                                      <label class="form-check-label" for="form2Example3g">
+                                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                                      </label>
+                                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" style=" text-align: initial; left: 12%;"/>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-success" style="width: 40%">Register</button>
+                                    </div>
+
+                                    <p class="text-center text-muted mt-3">Have already an account? <a href="/web"
+                                        class="fw-bold text-body"><u>Login here</u></a></p>
+
+                                  </form>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+       
+        </t>
+    </template>
+</odoo>

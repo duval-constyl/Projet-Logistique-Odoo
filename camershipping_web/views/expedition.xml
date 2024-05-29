@@ -1,0 +1,314 @@
+<odoo>
+    <template id="expedition" >
+        <t t-call="website.layout">
+            <body>
+
+            <!-- Page Header Start -->
+               <div class="main-img">
+                   <div class="container py-5">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown" style="font-weight: bold">EXPEDITION</h1>
+                        <div class="mx-auto" style="width: 100%; max-width: 600px;">
+                        </div>
+                   </div>
+                   <div class="container">
+                     <form class="main-form" method="POST">
+                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token() "/>
+                        <h3>Pré-expedition</h3>
+                        <div class="row">
+                           <div class="col-md-9">
+                              <div class="row">
+                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label >Article Type</label>
+                                    <input class="form-control" placeholder="" type="text" name="type_coliss"/>
+                                 </div>
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label for="transport_meanss">Transport Means</label>
+                                    <select name="transport_meanss" class="form-control link-style" id="transport_meanss">
+                                        <option  t-attf-value="maritime">Sea Transport</option>
+                                        <option t-attf-value="fret">Air Transport</option>
+                                        <option  t-attf-value="rail">Rail Transport</option>
+                                        <option  t-attf-value="terrestre">Road Transport</option>
+                                    </select>
+                                 </div>
+                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label >Mass</label>
+                                    <input class="form-control" placeholder="00.0 ( in kg)" type="text" name="masss"/>
+                                 </div>
+                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label >Volume</label>
+                                    <input class="form-control" placeholder="00.0 ( in m^3)" type="text" name="volumes"/>
+                                 </div>
+                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label >Quantity</label>
+                                    <input class="form-control" placeholder="00" type="text" name="qtys"/>
+                                 </div>
+                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <label >Height</label>
+                                    <input class="form-control" placeholder="00.0 (in m)" type="text" name="heights"/>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                              <button type="submit" class="btn btn-success" style="width: 40%; border-radius: 20px;">submit</button>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+
+
+                <!-- price start -->
+                <div class="demo">
+                    <div class="container">
+                        <div class="title-text">
+                            <p>Transport Price</p>
+                            <h1>Ours different transport price</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6" id="price-col">
+                                <div class="pricingTable">
+                                    <div class="pricingTable-header">
+                                        <i class="fa fa-plane"></i>
+                                        <div class="price-value"> 25,000Fcfa <span class="month">per Article</span> </div>
+                                    </div>
+                                    <h3 class="heading">AIR Transportation</h3>
+                                    <div class="pricing-content">
+                                        <ul>
+                                            <li><b>50GB</b> Disk Space</li>
+                                            <li><b>50</b> Email Accounts</li>
+                                            <li><b>50GB</b> Monthly Bandwidth</li>
+                                            <li><b>10</b> subdomains</li>
+                                            <li><b>15</b> Domains</li>
+                                        </ul>
+                                    </div>
+<!--                                    <div class="pricingTable-signup">-->
+<!--                                        <a href="#">Select</a>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6" id="price-col">
+                                <div class="pricingTable green">
+                                    <div class="pricingTable-header">
+                                        <i class="fa fa-train"></i>
+                                        <div class="price-value"> 10,000Fcfa <span class="month">per Article</span> </div>
+                                    </div>
+                                    <h3 class="heading">RAIL Transportation</h3>
+                                    <div class="pricing-content">
+                                        <ul>
+                                            <li><b>60GB</b> Disk Space</li>
+                                            <li><b>60</b> Email Accounts</li>
+                                            <li><b>60GB</b> Monthly Bandwidth</li>
+                                            <li><b>15</b> subdomains</li>
+                                            <li><b>20</b> Domains</li>
+                                        </ul>
+                                    </div>
+<!--                                    <div class="pricingTable-signup">-->
+<!--                                        <a href="#">Select</a>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6" id="price-col">
+                                <div class="pricingTable blue">
+                                    <div class="pricingTable-header">
+                                        <i class="fa fa-ship"></i>
+                                        <div class="price-value"> 15,000Fcfa <span class="month">per Article</span> </div>
+                                    </div>
+                                    <h3 class="heading">SEA Transportation</h3>
+                                    <div class="pricing-content">
+                                        <ul>
+                                            <li><b>70GB</b> Disk Space</li>
+                                            <li><b>70</b> Email Accounts</li>
+                                            <li><b>70GB</b> Monthly Bandwidth</li>
+                                            <li><b>20</b> subdomains</li>
+                                            <li><b>25</b> Domains</li>
+                                        </ul>
+                                    </div>
+<!--                                    <div class="pricingTable-signup">-->
+<!--                                        <a href="#">Select</a>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6" id="price-col">
+                                <div class="pricingTable red">
+                                    <div class="pricingTable-header">
+                                        <i class="fa fa-bus"></i>
+                                        <div class="price-value"> 8,000Fcfa <span class="month">per Article</span> </div>
+                                    </div>
+                                    <h3 class="heading">RO Transportation</h3>
+                                    <div class="pricing-content">
+                                        <ul>
+                                            <li><b>70GB</b> Disk Space</li>
+                                            <li><b>70</b> Email Accounts</li>
+                                            <li><b>70GB</b> Monthly Bandwidth</li>
+                                            <li><b>20</b> subdomains</li>
+                                            <li><b>25</b> Domains</li>
+                                        </ul>
+                                    </div>
+<!--                                    <div class="pricingTable-signup">-->
+<!--                                        <a href="#">Select</a>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Price End -->
+
+
+                <!-- EXPEDITAITE SECTION-->
+                <div class="container-fluid" id="contain-fluid">
+                     <div class="title-text">
+                        <p>Expedition Form</p>
+                        <h1>Register every expedition ours site</h1>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div>
+                            <div class="card">
+                                <h2 id="heading">Expedition Form</h2>
+                                <form id="msform" action="/expedition" method="POST">
+                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token() "/>
+                                    <!-- progressbar -->
+                                    <ul id="progressbar">
+                                        <li class="active" id="account"><strong>Receiver Info</strong></li>
+                                        <li id="personal"><strong>Article Info</strong></li>
+                                        <li id="payment"><strong>Image</strong></li>
+                                        <li id="confirm"><strong>Finish</strong></li>
+                                    </ul>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div> <br/> <!-- fieldsets -->
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h2 class="fs-title">Receiver Information:</h2>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h2 class="steps">Step 1 - 4</h2>
+                                                </div>
+                                            </div>
+                                            <div class="form-input">
+                                                <label for="name" class="fieldlabels">Name :</label>
+                                                <input type="text" id="nom" name="names" />
+
+                                                <label for="phone" class="fieldlabels">Phone :</label>
+                                                <input type="phone" id="phone" name="phone" />
+
+                                                <label for="email" class="fieldlabels">Email :</label>
+                                                <input type="email" id="email" name="email"/>
+
+                                                <label for="card_id" class="fieldlabels">National card id :</label>
+                                                <input type="card_id" id="card_id" name="card_id"/>
+
+                                                <label for="address" class="fieldlabels">Address :</label>
+                                                <input type="text" id="address" name="adresse" />
+
+                                               <label for="country_id" class="control-label" > Select Country</label>
+                                                  <select name="country_id" class="form-control link-style">
+                                                      <t t-foreach="countries" t-as="countrie">
+                                                          <option t-esc="countrie.name" t-att-value="countrie.id" />
+                                                      </t>
+                                                  </select>
+
+                                                <label for="city" class="fieldlabels">City :</label>
+                                                <input type="text" id="address" name="city" />
+
+                                                <label for="zipcode" class="fieldlabels">Code postal :</label>
+                                                <input type="text" id="address" name="zip" />
+                                            </div>
+                                        </div>
+                                        <input type="button" name="next" class="next action-button" value="Next" />
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h2 class="fs-title">Article Info:</h2>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h2 class="steps">Step 2 - 4</h2>
+                                                </div>
+                                            </div>
+                                             <div class="form-input">
+                                                <label for="article" class="fieldlabels">Article Type :</label>
+                                                <input type="text" id="nom" name="type_colis" />
+
+                                                <label for="transport_means" class="fieldlabels">Transport Means :</label>
+                                                <select name="transport_means" class="form-control link-style" id="transport_means">
+                                                    <option  t-attf-value="maritime">Sea Transport</option>
+                                                    <option t-attf-value="fret">Air Transport</option>
+                                                    <option  t-attf-value="rail">Rail Transport</option>
+                                                    <option  t-attf-value="terrestre">Road Transport</option>
+                                                </select>
+
+                                                <label for="mass" class="fieldlabels">Mass :</label>
+                                                <input type="text" id="email" name="mass" placeholder="00.0 ( in kg)"/>
+
+                                                <label for="volume" class="fieldlabels">Volume :</label>
+                                                <input type="text" id="card_id" name="volume" placeholder="00.0 ( in m^3)"/>
+
+                                                <label for="height" class="fieldlabels">Height :</label>
+                                                <input type="text" id="height" name="height" placeholder="00.0 ( in m)" />
+
+                                                <label for="quantity" class="fieldlabels">Quantity :</label>
+                                                <input type="text" id="qty" name="qty" placeholder="00" />
+
+                                            </div>
+                                        </div>
+                                        <input type="button" name="next" class="next action-button" value="Next" />
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h2 class="fs-title">Image Upload:</h2>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h2 class="steps">Step 3 - 4</h2>
+                                                </div>
+                                            </div>
+                                            <div class="form-input">
+                                                <label class="fieldlabels">Upload Your Photo:</label>
+                                                <input type="file" name="pic" accept="image/*"/>
+                                                <label class="fieldlabels">Upload Signature Photo:</label>
+                                            </div>
+                                        </div>
+                                        <input type="submit" name="next" class="next action-button" value="Submit" />
+<!--                                        <button type="submit" class="btn btn-success" style="width: 20%; border-radius: 20px;">submit</button>-->
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h2 class="fs-title">Finish:</h2>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h2 class="steps">Step 4 - 4</h2>
+                                                </div>
+                                            </div> <br/><br/>
+                                            <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br/>
+                                            <div class="row justify-content-center">
+                                                <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"/> </div>
+                                            </div> <br/><br/>
+                                            <div class="row justify-content-center">
+                                                <div class="col-7 text-center">
+                                                    <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </body>
+        </t>
+    </template>
+</odoo>
