@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+          <record id="transporteur1" model="logistique.transporteur">
+                <field name="name">Axcel</field>
+                <field name="surname"> Bob</field>
+                <field name="mail">axcel@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">691755263</field>
+                <field name="adresse">Kotto</field>
+                <field name="permis">permis3</field>
+                <field name="vehicule">Vans</field>
+                <field name="num_vehicule">LT0014</field>
+                <field name="trajet">Yde-Dla</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/tra1.png"/>
+          </record>
+          <record id="transporteur2" model="logistique.transporteur">
+                <field name="name">Armel</field>
+                <field name="surname"> Jordan</field>
+                <field name="mail">armel@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">691755260</field>
+                <field name="adresse">Beedi</field>
+                <field name="permis">permis3</field>
+                <field name="vehicule">Vans</field>
+                <field name="num_vehicule">LT1014</field>
+                <field name="trajet">Yde-Dla</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/tra2.png"/>
+          </record>
+          <record id="transporteur3" model="logistique.transporteur">
+                <field name="name">Pierre</field>
+                <field name="surname"> Tamba</field>
+                <field name="mail">pierre@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">698755263</field>
+                <field name="adresse">Logpom</field>
+                <field name="permis">permis3</field>
+                <field name="vehicule">Vans</field>
+                <field name="num_vehicule">LT0082</field>
+                <field name="trajet">Dla</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/tra3.png"/>
+          </record>
+          <record id="transporteur4" model="logistique.transporteur">
+                <field name="name">Pop</field>
+                <field name="surname"> Tombé</field>
+                <field name="mail">pop@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">691145263</field>
+                <field name="adresse">Kotto</field>
+                <field name="permis">permis3</field>
+                <field name="vehicule">Vans</field>
+                <field name="num_vehicule">LT0029</field>
+                <field name="trajet">Kribi-Dla</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/tra4.png"/>
+          </record>
+          <record id="transporteur5" model="logistique.transporteur">
+                <field name="name">Watt</field>
+                <field name="surname"> Gembé</field>
+                <field name="mail">watt@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">691757263</field>
+                <field name="adresse">Logpom</field>
+                <field name="permis">permis3</field>
+                <field name="vehicule">Vans</field>
+                <field name="num_vehicule">LT0098</field>
+                <field name="trajet">Yde-Dla</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/tra5.png"/>
+          </record>
+    </data>
+</odoo>

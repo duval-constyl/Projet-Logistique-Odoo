@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="marchacommande_view_tree" model="ir.ui.view">
+        <field name="name">marchacommande.view.tree</field>
+        <field name="model">logistique.marchacommande</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="marchandise_id"/>
+                <!-- <field name="name"/> -->
+                <field name="description"/>
+                <field name='quantity'/>
+                <field name="type"/>
+                <field name="barcode"/>
+                <field name="sale_price"/>
+                <field name="total"/>
+                <field name="vente"/>
+            </tree>
+        </field>
+    </record>
+
+
+     <record id="logistique_marchacommande_view_form" model="ir.ui.view">
+            <field name="name">logistique.marchacommande.view.form</field>
+            <field name="model">logistique.marchacommande</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="marchandise_id"/>
+                                <!-- <field name="name"/> -->
+                                <field name="description"/>
+                                <field name='quantity'/>
+                                <field name="type"/>
+                            </group>
+                            <group>
+                                <field name="barcode"/>
+                                <field name="sale_price"/>
+                                <field name="total"/>
+                                <field name="vente"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+
+    <record id="commande_view_tree" model="ir.ui.view">
+        <field name="name">commande.view.tree</field>
+        <field name="model">logistique.commande</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="sender"/>
+                <field name="date"/>
+                <field name="moyen_paiement"/>
+                <field name="frais_total"/>
+                <field name="logisticien"/>
+                <field name="transporteur"/>
+                <field name="destination"/>
+                <field name="date_livraison"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="commande_view_kanban" model="ir.ui.view">
+        <field name="name">commande.view.kanban</field>
+        <field name="model">logistique.commande</field>
+        <field name="arch" type="xml">
+             <kanban class="o_kanban_mobile" sample="1">
+                <field name="reference"/>
+                <field name="sender"/>
+                <field name="date"/>
+                <field name="moyen_paiement"/>
+                <field name="frais_total"/>
+                 <field name="logisticien"/>
+                <field name="transporteur"/>
+                <field name="destination"/>
+                <field name="date_livraison"/>
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section" />
+                                <ul>
+                                    <li>Reference: <field name="reference" /></li>
+                                    <li>Client: <field name="sender" /></li>
+                                    <li>Destination: <field name="destination" /></li>
+                                    <li>Transporteur: <field name="transporteur" /></li>
+                                    <li>Date Livraison: <field name="date_livraison"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+
+    <record id="commande_view_form" model="ir.ui.view">
+            <field name="name">commande.view.form</field>
+            <field name="model">logistique.commande</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                             <button id="button_devis" name="action_devis" string="Mettre en devis" states="annuler"
+                            class="btn-primary" type="object"/>
+                            <button id="button_devisenv" name="action_devisenv" string="Envoyer pars mail" states="bon"
+                            class="btn-primary" type="object"/>
+                             <button id="button_bon" name="action_bon" string="Valider" states="devis"
+                            class="btn-primary" type="object"/>
+                             <button id="button_annuler" name="action_annuler" string="Annuler" states="devis,devisenv,bon"
+                             type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="devis,devisenv,bon,annuler"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+
+                        <div class="oe_title">
+                          <h1>
+                              <field name="reference" readonly="1"/>
+                          </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sender"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="moyen_paiement"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="frais_total"/>
+                                <field name="active" invisible="1"/>
+
+<!--                                <field name="id_article"/>-->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Ligne de Commande">
+                                <field name="marchandiseline_ids"
+                                    widget="section_and_note_one2many"
+                                    mode="tree">
+                                    <form>
+                                        <field name="marchandise_id"/>
+                                        <!-- <field name="name"/> -->
+                                        <field name="description"/>
+                                        <field name='quantity'/>
+                                        <field name="type"/>
+                                        <field name="barcode"/>
+                                        <field name="sale_price"/>
+                                        <field name="vente"/>
+                                        <field name="total"/>
+                                    </form>
+                                    <tree editable="bottom">
+                                        <field name="marchandise_id"/>
+                                        <!-- <field name="name"/> -->
+                                        <field name="description"/>
+                                        <field name='quantity'/>
+                                        <field name="type"/>
+                                        <field name="barcode"/>
+                                        <field name="sale_price"/>
+                                        <field name="vente"/>
+                                        <field name="total"/>
+                                    </tree>
+                                </field>
+
+                            </page>
+                            <page string="Autre information">
+                                <group column="2">
+                                    <group colspan="1" string="Vente">
+                                        <field name="logisticien"/>
+                                    </group>
+                                    <group colspan="1" string="Livraison">
+                                        <field name="transporteur"/>
+                                        <field name="destination"/>
+                                        <field name="date_livraison"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+    </record>
+
+
+    <record id="view_logistique_commande_graph" model="ir.ui.view">
+        <field name="model">logistique.commande</field>
+        <field name="arch" type="xml">
+             <graph type="pie">
+                <field name="reference"/>
+                 <field name="sender"/>
+             </graph>
+        </field>
+    </record>
+
+    <record id="view_logistique_commande_pivot" model="ir.ui.view">
+         <field name="model">logistique.commande</field>
+         <field name="arch" type="xml">
+             <pivot>
+                 <field name="reference" type="row"/>
+                 <field name="sender" type="col"/>
+                 <field name="destination" type="col"/>
+             </pivot>
+         </field>
+    </record>
+
+
+    <record id="logistique_commande_action" model="ir.actions.act_window">
+        <field name="name">Commande</field>
+        <field name="res_model">logistique.commande</field>
+        <field name="view_mode">tree,kanban,form,graph,pivot</field>
+        <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Ajoutez une nouvelle commande
+              </p><p>
+                juste avec un clique verifiez et creez et confirmez les commandes
+            des clients
+              </p>
+        </field>
+    </record>
+
+    <menuitem name="Logistique"
+              id="logistique_base_menu"/>
+
+
+    <menuitem name="Bon Commande"
+            id="logistique_menu"
+            parent="logistique_base_menu"
+            sequence="40"/>
+
+    <menuitem name="Commande"
+              id="logistique_commande_menu"
+              parent="logistique_menu"
+              sequence="10"
+              action="logistique_commande_action"/>
+
+
+</odoo>

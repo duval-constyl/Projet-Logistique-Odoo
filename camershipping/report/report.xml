@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- QWeb Reports pdf-->
+        <record id="report_logistique_livraison" model="ir.actions.report">
+            <field name="name">Facture de la livraison</field>
+            <field name="model">logistique.livraison</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">camershipping.report_logistique_livraison_id_detail</field>
+            <field name="report_file">camershipping.report_logistique_livraison_id_detail</field>
+            <field name="binding_model_id" ref="model_logistique_livraison"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="report_logistique_expedition" model="ir.actions.report">
+            <field name="name">Facture de l'expedition</field>
+            <field name="model">logistique.expedition</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">camershipping.report_logistique_expedition_id_detail</field>
+            <field name="report_file">camershipping.report_logistique_expedition_id_detail</field>
+            <field name="binding_model_id" ref="model_logistique_expedition"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="report_logistique_produit" model="ir.actions.report">
+            <field name="name">Facture de la commande</field>
+            <field name="model">logistique.produit</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">camershipping.report_logistique_produit_id_detail</field>
+            <field name="report_file">camershipping.report_logistique_produit_id_detail</field>
+            <field name="binding_model_id" ref="model_logistique_produit"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+</odoo>

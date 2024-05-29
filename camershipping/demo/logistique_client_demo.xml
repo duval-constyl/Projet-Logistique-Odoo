@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+          <record id="client1" model="logistique.client">
+                <field name="name">Jeff</field>
+                <field name="surname"> Carlton</field>
+                <field name="mail">jeff@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691475263</field>
+                <field name="adresse">Bassong</field>
+          </record>
+          <record id="client2" model="logistique.client">
+                <field name="name">Towa</field>
+                <field name="surname"> Pharel</field>
+                <field name="mail">pharel@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691473263</field>
+                <field name="adresse">Logpom</field>
+          </record>
+        <record id="client3" model="logistique.client">
+                <field name="name">Talla</field>
+                <field name="surname"> Herman</field>
+                <field name="mail">herman@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">671475263</field>
+                <field name="adresse">Beedi</field>
+          </record>
+        <record id="client4" model="logistique.client">
+                <field name="name">John</field>
+                <field name="surname"> Steve</field>
+                <field name="mail">steve@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691485263</field>
+                <field name="adresse">Logpom</field>
+          </record>
+        <record id="client5" model="logistique.client">
+                <field name="name">Christ</field>
+                <field name="surname"> Nokam</field>
+                <field name="mail">christ@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691775263</field>
+                <field name="adresse">Bassong</field>
+          </record>
+        <record id="client6" model="logistique.client">
+                <field name="name">Kamdem</field>
+                <field name="surname"> Nathan</field>
+                <field name="mail">nathan@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691475243</field>
+                <field name="adresse">Logpom</field>
+          </record>
+        <record id="client7" model="logistique.client">
+                <field name="name">Essomba</field>
+                <field name="surname"> Marvyn</field>
+                <field name="mail">marvyn@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691275263</field>
+                <field name="adresse">Andem</field>
+          </record>
+        <record id="client8" model="logistique.client">
+                <field name="name">Mambou</field>
+                <field name="surname"> Taff</field>
+                <field name="mail">mambou@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691477263</field>
+                <field name="adresse">Bassong</field>
+          </record>
+        <record id="client9" model="logistique.client">
+                <field name="name">Balog</field>
+                <field name="surname"> Georges</field>
+                <field name="mail">balog@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691975263</field>
+                <field name="adresse">Yanko</field>
+          </record>
+        <record id="client10" model="logistique.client">
+                <field name="name">Eyan</field>
+                <field name="surname"> Anthony</field>
+                <field name="mail">anthony@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">699475263</field>
+                <field name="adresse">Bassong</field>
+          </record>
+        <record id="client11" model="logistique.client">
+                <field name="name">Bob</field>
+                <field name="surname"> Moustapha</field>
+                <field name="mail">bob@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">698475263</field>
+                <field name="adresse">Bassong</field>
+          </record>
+        <record id="client12" model="logistique.client">
+                <field name="name">Dilan</field>
+                <field name="surname"> Fotsing</field>
+                <field name="mail">dilan@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">691484263</field>
+                <field name="adresse">Pk20</field>
+          </record>
+        <record id="client13" model="logistique.client">
+                <field name="name">Yann</field>
+                <field name="surname"> Tony</field>
+                <field name="mail">yann@gmail.com</field>
+                <field name="country" ref="base.us"/>
+                <field name="telephone">697375263</field>
+                <field name="adresse">Nyalla</field>
+          </record>
+    </data>
+</odoo>

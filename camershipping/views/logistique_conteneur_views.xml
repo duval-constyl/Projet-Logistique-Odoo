@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="conteneur_view_tree" model="ir.ui.view">
+        <field name="name">conteneur.view.tree</field>
+        <field name="model">logistique.conteneurline</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sender"/>
+                <field name="envoyer"/>
+                <field name="destination"/>
+                <field name="logisticien"/>
+                <field name="transport_means"/>
+                <field name="total"/>
+                <field name="type_colis"/>
+                <field name="qty"/>
+                <field name="poids"/>
+                <field name="sub_total"/>
+                <field name="names"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="logistique_conteneur_view_form" model="ir.ui.view">
+            <field name="name">logistique.conteneur.view.form</field>
+            <field name="model">logistique.conteneurline</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="sender"/>
+                                <field name="names"/>
+                                <field name="envoyer"/>
+                                <field name="destination"/>
+                                <field name="logisticien"/>
+                            </group>
+                            <group>
+                                <field name="transport_means"/>
+                                <field name="total"/>
+                                <field name="type_colis"/>
+                                <field name="poids"/>
+                                <field name="qty"/>
+                                <field name="sub_total"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+
+    <record id="container_view_tree" model="ir.ui.view">
+        <field name="name">container.view.tree</field>
+        <field name="model">logistique.container</field>
+        <field name="arch" type="xml">
+            <tree>
+                 <field name="reference"/>
+                 <field name="container"/>
+                 <field name="expedition_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="container_view_kanban" model="ir.ui.view">
+        <field name="name">container.view.kanban</field>
+        <field name="model">logistique.container</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1">
+                <field name="reference"/>
+                <field name="container"/>
+                <field name="expedition_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section" />
+                                <ul>
+                                    <li>Reference: <field name="reference" /></li>
+                                    <li>Numero de container: <field name="container" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="container_view_form" model="ir.ui.view">
+        <field name="name">container.view.form</field>
+        <field name="model">logistique.container</field>
+        <field name="arch" type="xml">
+            <form edit="0">
+                <header>
+                    <button id="button_done" name="action_done" string="Confirm" states="draft"
+                    class="btn-primary" type="object"/>
+                    <button id="button_send" name="action_send" string="Send" states="done"
+                    class="btn-primary" type="object"/>
+                     <button id="button_draft" name="action_draft" string="Draft" states="cancel"
+                    class="btn-primary" type="object"/>
+                     <button id="button_cancel" name="action_cancel" string="Cancel" states="draft,done,send"
+                     type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,send"/>
+                </header>
+                <sheet>
+                     <div class="oe_button_box" name="button_box">
+                             <button class="oe_stat_button" type="object" name="action_operartion_move"
+                                icon="fa-arrows-v">
+                                <field string="Operation" name="operation" widget="statinfo"/>
+                            </button>
+                     </div>
+                     <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+<!--                        <label class="oe_edit_only" for="name" string="Nom Logisticien"/>-->
+                        <h1>
+                            <field name="container" placeholder="Numero Conteneur"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Expedition">
+                            <field name="expedition_ids"
+                                    widget="section_and_note_one2many"
+                                    mode="tree">
+                                    <form>
+                                        <field name="expedition_id"/>
+                                        <field name="sender"/>
+                                        <field name="names"/>
+                                        <field name="envoyer"/>
+                                        <field name="destination"/>
+                                        <field name="logisticien"/>
+                                        <field name="transport_means"/>
+                                        <field name="total"/>
+                                        <field name="type_colis"/>
+                                        <field name="poids"/>
+                                        <field name="qty"/>
+                                        <field name="sub_total"/>
+                                    </form>
+                                    <tree editable="bottom">
+                                        <field name="expedition_id"/>
+                                        <field name="sender"/>
+                                        <field name="names"/>
+                                        <field name="envoyer"/>
+                                        <field name="destination"/>
+                                        <field name="logisticien"/>
+                                        <field name="transport_means"/>
+                                        <field name="total"/>
+                                        <field name="type_colis"/>
+                                        <field name="poids"/>
+                                        <field name="qty"/>
+                                        <field name="sub_total"/>
+                                    </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                 <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_
+                        followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                 </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="logistique_container_action" model="ir.actions.act_window">
+        <field name="name">Conteneur</field>
+        <field name="res_model">logistique.container</field>
+        <field name="view_mode">kanban,form,tree</field>
+        <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Rangez les differents expedition dans les conteneurs
+              </p>
+<!--            <p>-->
+<!--                juste avec un clique verifiez et creez et confirmez les commandes-->
+<!--            des clients-->
+<!--              </p>-->
+        </field>
+    </record>
+
+     <menuitem name="Logistique"
+              id="logistique_base_menu"/>
+
+    <menuitem name="Entrepot"
+              id="logistique_tracking_menu"
+              parent="logistique_base_menu"
+              sequence="50"/>
+
+    <menuitem name="Conteneur"
+              id="logistique_container_menu"
+              parent="logistique_tracking_menu"
+              sequence="40"
+              action="logistique_container_action"/>
+
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+          <record id="logisticien1" model="logistique.logisticien">
+                <field name="name">Tom</field>
+                <field name="surname">Spere</field>
+                <field name="mail">tom@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">691445263</field>
+                <field name="adresse">Bassong</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/log1.png"/>
+          </record>
+          <record id="logisticien2" model="logistique.logisticien">
+                <field name="name">Jordan</field>
+                <field name="surname">Karlton</field>
+                <field name="mail">jordan@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">691478263</field>
+                <field name="adresse">Ndokoti</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/log2.png"/>
+          </record>
+          <record id="logisticien3" model="logistique.logisticien">
+                <field name="name">Taff</field>
+                <field name="surname">Vivian</field>
+                <field name="mail">taff@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">699475263</field>
+                <field name="adresse">Akwa</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/log3.png"/>
+          </record>
+          <record id="logisticien4" model="logistique.logisticien">
+                <field name="name">Steve</field>
+                <field name="surname">Fameni</field>
+                <field name="mail">steve@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">691475743</field>
+                <field name="adresse">Logpom</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/log4.png"/>
+          </record>
+          <record id="logisticien5" model="logistique.logisticien">
+                <field name="name">Albert</field>
+                <field name="surname">Kana</field>
+                <field name="mail">albert@gmail.com</field>
+                <field name="nationality" ref="base.us"/>
+                <field name="telephone">691474663</field>
+                <field name="adresse">Kotto</field>
+                <field name="ufile" type="base64" file="camershipping/static/img/log5.png"/>
+          </record>
+    </data>
+</odoo>

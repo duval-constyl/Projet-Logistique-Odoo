@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+     <record id="logistique_quote_view_tree" model="ir.ui.view">
+        <field name="name">logistique.quote.view.tree</field>
+        <field name="model">logistique.quote</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type_coliss"/>
+                <field name="transport_meanss"/>
+                <field name="qtys"/>
+                <field name="masss"/>
+                <field name="volumes"/>
+                <field name="heights"/>
+                <field name="poidss"/>
+                <field name="prixs"/>
+                <field name="sub_totals"/>
+                <field name="totals"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="quote_kanban" model="ir.ui.view">
+         <field name="name">quote.kanban</field>
+         <field name="model">logistique.quote</field>
+         <field name="arch" type="xml">
+             <kanban default_group_by="state">
+                 <field name="state" />
+                 <field name="type_coliss"/>
+                 <field name="qtys"/>
+                 <field name="poidss"/>
+                 <field name="totals"/>
+                 <templates>
+                     <t t-name="kanban-box">
+                         <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section" />
+                                <ul>
+                                    <li>Type colis: <field name="type_coliss"/></li>
+                                    <li>Quantité: <field name="qtys"/></li>
+                                    <li>Poids: <field name="poidss"/></li>
+                                    <li>Total: <field name="totals"/></li>
+                                </ul>
+                            </div>
+                         </div>
+                     </t>
+                 </templates>
+             </kanban>
+         </field>
+    </record>
+
+    <record id="quote_view_form" model="ir.ui.view">
+            <field name="name">quote.view.form</field>
+            <field name="model">logistique.quote</field>
+            <field name="arch" type="xml">
+                <form create="0">
+                    <header>
+                         <button id="button_none" name="action_none" string="None verified" states="send"
+                             class="btn-primary" type="object"/>
+                         <button id="button_valide" name="action_valide" string="Valide" states="modifier"
+                             class="btn-primary" type="object"/>
+                         <button id="button_modifier" name="action_modifier" string="Modified" states="none"
+                             class="btn-primary" type="object"/>
+                         <button id="button_envoyer" name="action_envoyer" string="Send" states="valide"
+                             class="btn-primary" type="object"/>
+<!--                         <button id="button_annuler" name="action_annuler" string="Annuler" states="en_cours,valider,payer,send"-->
+<!--                             type="object"/>-->
+                        <field name="state" widget="statusbar" statusbar_visible="none,modifier,valide,envoyer"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Send" bg_color="bg-success" attrs="{'invisible': [('state', '!=', 'send')]}"/>
+                        <group>
+                            <group>
+                                <field name="type_coliss"/>
+                                <field name="transport_meanss"/>
+                                <field name="prixs"/>
+                                <field name="sub_totals"/>
+                                <field name="totals"/>
+                            </group>
+                            <group>
+                                 <field name="qtys"/>
+                                 <field name="masss"/>
+                                 <field name="volumes"/>
+                                 <field name="heights"/>
+                                 <field name="poidss"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+    </record>
+
+    <record id="logistique_quote_action" model="ir.actions.act_window">
+        <field name="name">Pre-expedition</field>
+        <field name="res_model">logistique.quote</field>
+        <field name="view_mode">kanban,tree,form</field>
+<!--        <field name="search_view_id" ref="quote_search_view"/>-->
+    </record>
+
+    <menuitem name="Logistique"
+              id="logistique_base_menu"/>
+
+    <menuitem name="Entrepot"
+              id="logistique_tracking_menu"
+              parent="logistique_base_menu"
+              sequence="50"/>
+
+    <menuitem name="Pre-expedition"
+              id="logistique_quote_menu"
+              parent="logistique_tracking_menu"
+              sequence="10"
+              action="logistique_quote_action"/>
+</odoo>

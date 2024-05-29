@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_logistique_produit_id_detail">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.html_container">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div name="solde">
+                                <div class="col-xs-4 pull-right">
+                                     <div>
+                                        <strong>Nom:  </strong>
+                                        <span t-field="o.sender.name"/>
+                                     </div>
+                                     <div>
+                                        <strong>Prénom:  </strong>
+                                        <span t-field="o.sender.surname"/>
+                                     </div>
+                                     <div>
+                                        <strong>Téléphone:  </strong>
+                                        <span t-field="o.sender.telephone"/>
+                                     </div>
+                                    <div>
+                                        <strong>Email:  </strong>
+                                        <span t-field="o.sender.mail"/>
+                                     </div>
+                                </div>
+                            </div>
+
+                            <div style="padding-top:55px;"></div>
+
+                            <h2>
+                                <span t-field="o.reference"/>
+                            </h2>
+                            <div>
+                                <strong style="font-weight: bold !important,font-size: 16px !important">Date devis: </strong>
+                                <span t-field="o.date"/>
+                            </div>
+                            <div>
+                                <strong style="font-weight: bold !important,font-size: 16px !important">Moyen de paiement: </strong>
+                                <span t-field="o.moyen_paiement"/>
+                            </div>
+                            <div>
+                                <strong style="font-weight: bold !important,font-size: 16px !important">Gestionnaire: </strong>
+                                <span t-field="o.logisticien"/>
+                            </div>
+
+                            <div style="padding-top:10px;"></div>
+
+                            <label style="justify-content:center !important; align-items: center !important;font-size: 20px !important; font-weight: bold !important;">Article commander</label>
+                            <table class="table" >
+                                <thead>
+                                    <tr>
+                                        <th style="background-color:orange !important;color:#FFF !important;border: 1px !important; ">Nom</th>
+                                        <th style="background-color:orange !important;color:#FFF !important;border: 1px !important; ">Quantité</th>
+                                        <th style="background-color:orange !important;color:#FFF !important;border: 1px !important; ">Prix de vente</th>
+                                        <th style="background-color:orange !important;color:#FFF !important;border: 1px !important; ">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="marchandiseline_ids" t-value="o.marchandiseline_ids"/>
+                                    <tr t-foreach="marchandiseline_ids" t-as="marchandiseline_id" t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                        <td>
+                                            <span t-field="marchandiseline_id.marchandise_id"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="marchandiseline_id.quantity_ok"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="marchandiseline_id.sale_price"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="marchandiseline_id.vente"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div name="solde">
+                                <div class="col-xs-4 pull-right">
+                                    <table  class="table table-condensed">
+                                        <tr class="border-black" style=" background-color: orange ; color:#fff !important;">
+                                            <td>
+                                                <strong style="color:#fff !important;">Total:  </strong>
+                                            </td>
+                                            <td class="text-right" style="color:#fff">
+                                                <span t-field="o.frais_total"
+                                                    t-field-options='{"widget": "monetary"}'/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div style="padding-top:10px;"></div>
+
+                            <div>
+                                <strong>Livraison:  </strong>
+                                <span t-field="o.livraison_ok"/>
+                            </div>
+                            <div attrs="{'invisible': [('o.livraison_ok', '=', 'non')]}">
+                                <strong> Frais Livraison:  </strong>
+                                <span t-field="o.frais_livraison"/>
+                            </div>
+
+                            <div style="padding-top:70px;"></div>
+
+                            <div class="col-xs-4 pull-right">
+                                 <strong>Fait le  </strong>
+                                <span t-field="o.date"/>
+                            </div>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+         </template>
+    </data>
+</odoo>

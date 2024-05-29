@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="logistique_blog_view_tree" model="ir.ui.view">
+        <field name="name">logistique.blog.view.tree</field>
+        <field name="model">logistique.blog</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="title"/>
+                <field name="date"/>
+                <field name="description"/>
+                <field name="image"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="logistique_blog_view_form" model="ir.ui.view">
+        <field name="name">logistique.blog.view.form</field>
+        <field name="model">logistique.blog</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                    <group>
+                       <group>
+                            <field name="date"/>
+                            <field name="title"/>
+                        </group>
+                        <group>
+                              <field name="image" string="" widget="image"  col="120"  width="120"
+                           class="oe_avatar" options="{&quot;preview_image&quot;:&quot;image&quot;}"/>
+                              <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+
+                 <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                 </div>
+            </form>
+        </field>
+    </record>
+
+<!--     <record id="note_view_kanban" model="ir.ui.view">-->
+<!--        <field name="name">blog.view.kanban</field>-->
+<!--        <field name="model">logistique.blog</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <kanban class="o_kanban_mobile" sample="1">-->
+<!--                <field name="name"/>-->
+<!--                <field name="phone"/>-->
+<!--                <field name="note"/>-->
+<!--                <field name="id"/>-->
+<!--                <templates>-->
+<!--                    <t t-name="kanban-box">-->
+<!--                        <div class="oe_kanban_global_click">-->
+<!--                            <div class="oe_kanban_details">-->
+<!--                                <div class="o_kanban_tags_section" />-->
+<!--                                <ul>-->
+<!--                                    <li>Nom: <field name="name" /></li>-->
+<!--                                    <li>Mail: <field name="mail" /></li>-->
+<!--                                    <li>Telephone: <field name="phone" /></li>-->
+<!--                                    <li>Note: <field name="note" /></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </templates>-->
+<!--            </kanban>-->
+<!--        </field>-->
+<!--    </record>-->
+
+     <record id="logistique_blog_action" model="ir.actions.act_window">
+        <field name="name">Nouveauté</field>
+        <field name="res_model">logistique.blog</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                vous different actualité sur notre la logistique
+              </p>
+        </field>
+    </record>
+
+    <menuitem name="Logistique"
+              id="logistique_base_menu"/>
+
+    <menuitem name="Plus"
+              id="logistique_config_menu"
+              parent="logistique_base_menu"
+                sequence="50"/>
+
+
+    <menuitem name="Nouveauté"
+              id="logistique_blog_menu"
+              parent="logistique_config_menu"
+              sequence="10"
+              action="logistique_blog_action"/>
+
+</odoo>

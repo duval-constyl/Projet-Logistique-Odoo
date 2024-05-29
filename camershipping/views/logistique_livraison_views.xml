@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="commandeline_view_tree" model="ir.ui.view">
+        <field name="name">commandeline.view.tree</field>
+        <field name="model">logistique.commandeline</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="commande_id"/>
+                <field name="date"/>
+                <field name="moyen_paiement"/>
+                <field name="date_livraison"/>
+<!--                <field name="name"/>-->
+<!--                <field name="description"/>-->
+<!--                <field name='quantity'/>-->
+<!--                <field name="sale_price"/>-->
+            </tree>
+        </field>
+    </record>
+
+
+     <record id="logistique_commandeline_view_form" model="ir.ui.view">
+            <field name="name">logistique.commandeline.view.form</field>
+            <field name="model">logistique.commandeline</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="commande_id"/>
+<!--                                <field name="name"/>-->
+<!--                                <field name="description"/>-->
+<!--                                <field name='quantity'/>-->
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="moyen_paiement"/>
+                                <field name="date_livraison"/>
+<!--                                <field name="sale_price"/>-->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+
+    <record id="livraison_view_tree" model="ir.ui.view">
+        <field name="name">livraison.view.tree</field>
+        <field name="model">logistique.livraison</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="sender"/>
+                <field name="envoyeur"/>
+                <field name="destination"/>
+                <field name="logisticien"/>
+                <field name="transporteur"/>
+                <field name="frais_livraison"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+    <record id="livraison_view_kanban" model="ir.ui.view">
+        <field name="name">livraison.view.kanban</field>
+        <field name="model">logistique.livraison</field>
+        <field name="arch" type="xml">
+             <kanban class="o_kanban_mobile" sample="1" default_group_by="state">
+                <field name="reference"/>
+                <field name="sender"/>
+                 <field name="envoyeur"/>
+                 <field name="destination"/>
+                 <field name="logisticien"/>
+                <field name="transporteur"/>
+                 <field name="frais_livraison"/>
+                  <field name="total"/>
+               <field name="commande_id"/>
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section" />
+                                <ul>
+                                    <li>Reference: <field name="reference" /></li>
+                                    <li>Client: <field name="sender" /></li>
+                                    <li>Responsable: <field name="logisticien" /></li>
+                                    <li>Transporteur: <field name="transporteur" /></li>
+                                    <li>Total: <field name="total"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="livraison_view_form" model="ir.ui.view">
+            <field name="name">livraison.view.form</field>
+            <field name="model">logistique.livraison</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                         <button id="button_valider" name="action_valider" string="Valider" states="en_cours"
+                             class="btn-primary" type="object"/>
+                        <button id="button_payer" name="action_payer" string="Payez" states="valider"
+                             class="btn-primary" type="object"/>
+                        <button id="button_send" name="action_send" string="Envoyer pars mail" states="payer"
+                             class="btn-primary" type="object"/>
+                         <button id="button_en_cours" name="action_en_cours" string="Definir en cours" states="annuler"
+                             class="btn-primary" type="object"/>
+                         <button id="button_annuler" name="action_annuler" string="Annuler" states="en_cours,valider,payer,send"
+                             type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="en_cours,valider,payer,send"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="compte_total"
+                                icon="fa-money">
+                                <field string="Compte Total" name="total_count" widget="statinfo"/>
+                            </button>
+                             <button class="oe_stat_button" type="object" name="action_operartion_move"
+                                icon="fa-arrows-v">
+                                <field string="Operation" name="operation" widget="statinfo"/>
+                            </button>
+                        </div>
+
+                         <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <!--ruban de l'archivage-->
+                        <widget name="web_ribbon" title="Payer" bg_color="bg-success" attrs="{'invisible': [('state', '!=', 'payer')]}"/>
+                        <div class="oe_title">
+                          <h1>
+                              <field name="reference" readonly="1"/>
+                          </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sender"/>
+                            </group>
+                            <group>
+                                <field name="destination"/>
+                                <field name="envoyeur"/>
+                                  <field name="active" invisible="1"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Ligne de Commande">
+                                <field name="commandline_ids"
+                                    widget="section_and_note_one2many"
+                                    mode="tree">
+                                    <form>
+                                        <field name="commande_id"/>
+                                        <field name="date"/>
+                                        <field name="moyen_paiement"/>
+                                        <field name="date_livraison"/>
+                                    </form>
+                                    <tree editable="bottom">
+                                         <field name="commande_id"/>
+                                        <field name="date"/>
+                                        <field name="moyen_paiement"/>
+                                        <field name="date_livraison"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Autre information">
+                                <group column="2">
+                                    <group colspan="1">
+                                         <field name="frais_livraison"/>
+                                        <field name="currency_id" invisible="1"/>
+                                        <field name="logisticien"/>
+                                         <field name="transporteur"/>
+                                         <field name="mail"  widget="email"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                        <group column="2">
+                            <group colspan="1">
+
+                            </group>
+                            <group colspan="1">
+                                <field name="total"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_
+                        followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+    </record>
+
+     <record id="view_livraison_calendar" model="ir.ui.view">
+        <field name="model">logistique.livraison</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_livraison" >
+                <field name="sender"/>
+                <field name="destination"/>
+            </calendar>
+        </field>
+    </record>
+
+
+     <record id="logistique_livraison_action" model="ir.actions.act_window">
+        <field name="name">Livraison</field>
+        <field name="res_model">logistique.livraison</field>
+        <field name="view_mode">kanban,form,tree,calendar</field>
+         <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               Ajouter une nouvelle Livraison
+              </p><p>
+                Avec un click créez une nouvelle Livraison
+              </p>
+        </field>
+     </record>
+
+
+      <menuitem name="Logistique"
+                id="logistique_base_menu"/>
+
+        <menuitem name="Bon Commande"
+            id="logistique_menu"
+            parent="logistique_base_menu"
+            sequence="40"/>
+
+      <menuitem name=" Livraison"
+              id="logistique_livraison_menu"
+              parent="logistique_menu"
+              sequence="20"
+              action="logistique_livraison_action"/>
+
+</odoo>

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="marchacommande_view_tree" model="ir.ui.view">
+        <field name="name">marchacommande.view.tree</field>
+        <field name="model">logistique.marchacommande</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="marchandise_id"/>
+                <!-- <field name="name"/> -->
+                <field name="description"/>
+                <field name='quantity'/>
+                <field name='quantity_ok'/>
+                <field name="type"/>
+                <field name="barcode"/>
+                <field name="sale_price"/>
+<!--                <field name="total"/>-->
+                <field name="vente"/>
+            </tree>
+        </field>
+    </record>
+
+
+     <record id="logistique_marchacommande_view_form" model="ir.ui.view">
+            <field name="name">logistique.marchacommande.view.form</field>
+            <field name="model">logistique.marchacommande</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="marchandise_id"/>
+                                <!-- <field name="name"/> -->
+                                <field name="description"/>
+                                <field name='quantity'/>
+                                <field name="type"/>
+                            </group>
+                            <group>
+                                <field name="barcode"/>
+                                <field name="sale_price"/>
+                                <field name='quantity_ok'/>
+<!--                                <field name="total"/>-->
+                                <field name="vente"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record id="produit_view_tree" model="ir.ui.view">
+        <field name="name">produit.view.tree</field>
+        <field name="model">logistique.produit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="sender"/>
+                <field name="date"/>
+                <field name="moyen_paiement"/>
+                <field name="frais_total" sum="frais_total"/>
+                <field name="logisticien"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="produit_view_form" model="ir.ui.view">
+            <field name="name">produit.view.form</field>
+            <field name="model">logistique.produit</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                            <button id="button_payer" name="action_payer" string="Payer Content" states="bon,devisenv"
+                            class="btn-primary" type="object"/>
+                             <button id="button_devis" name="action_devis" string="Mettre en devis" states="annuler"
+                            class="btn-primary" type="object"/>
+                            <button id="button_devisenv" name="action_devisenv" string="Envoyer pars mail" states="bon"
+                            class="btn-primary" type="object"/>
+                             <button id="button_bon" name="action_bon" string="Valider" states="devis"
+                            class="btn-primary" type="object"/>
+                             <button id="button_annuler" name="action_annuler" string="Annuler" states="devis,devisenv,bon"
+                             type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="annuler,devis,bon,devisenv,payer"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                             <button name="action_livraison_move" class="oe_stat_button" icon="fa-truck" type="object">
+                                <field string="Livraison" name="livraison" widget="statinfo"/>
+                            </button>
+                            <button class="oe_stat_button" type="object" name="compte_total"
+                                icon="fa-money">
+                                <field string="Compte Total" name="total_count" widget="statinfo"/>
+                            </button>
+
+                        </div>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <widget name="web_ribbon" title="Payer Content" bg_color="bg-success" attrs="{'invisible': [('state', '!=', 'payer')]}"/>
+
+                        <div class="oe_title">
+                          <h1>
+                              <field name="reference" readonly="1"/>
+                              <field name="active" invisible="1"/>
+                          </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sender" options="{'no_create_edit': True, 'no_create': True}" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                <field name="name" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                <field name="surname" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                <field name="telephone" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                <field name="mail" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                            </group>
+                            <group>
+                                <field name="date" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                <field name="moyen_paiement" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                <field name="logisticien" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                <field name="livraison_ok" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="active" invisible="1"/>
+
+<!--                                <field name="id_article"/>-->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Ligne de produit">
+                                <field name="marchandiseline_ids"
+                                    widget="section_and_note_one2many"
+                                    mode="tree" attrs="{'readonly': [('state', '=', 'payer')]}">
+                                    <form>
+                                        <field name="marchandise_id"/>
+                                        <!-- <field name="name"/> -->
+                                        <field name="description"/>
+                                        <field name='quantity'/>
+                                        <field name='quantity_ok'/>
+                                        <field name="type"/>
+                                        <field name="barcode"/>
+                                        <field name="sale_price"/>
+                                        <field name="vente"/>
+<!--                                        <field name="total"/>-->
+                                    </form>
+                                    <tree editable="bottom">
+                                        <field name="marchandise_id"/>
+                                        <!-- <field name="name"/> -->
+                                        <field name="description"/>
+                                        <field name='quantity'/>
+                                        <field name='quantity_ok'/>
+                                        <field name="type"/>
+                                        <field name="barcode"/>
+                                        <field name="sale_price"/>
+                                        <field name="vente"/>
+<!--                                        <field name="total"/>-->
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Information Livraison" attrs="{'invisible': [('livraison_ok', '=', 'non')]}">
+                                <group column="2">
+                                    <group colspan="1" string="Livraison">
+                                        <field name="transporteur" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                        <field name="frais_livraison" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                        <field name="adresse_livraison" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                        <field name="date_livraison" attrs="{'readonly': [('state', '=', 'payer')]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+
+                        <group name="note_group"  col="6" class="mt-2 mt-md-0">
+                            <group colspan="4">
+                                <field name="condition" nolabel="1" placeholder="Condition générale..."/>
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="frais_total" attrs="{'readonly': [('state', '=', 'payer')]}">
+                                <field name="frais_livraison" attrs="{'invisible': [('livraison_ok', '=', 'non')]}"/>
+                                <field name="total_commande"/>
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="frais_total"/>
+                                </div>
+                                <field name="frais_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" decoration-bf="1"/>
+                            </group>
+                            <div class="oe_clear"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_
+                        followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+    </record>
+
+    <record id="produit_search" model="ir.ui.view">
+            <field name="name">produit.view.search</field>
+            <field name="model">logistique.produit</field>
+            <field name="arch" type="xml">
+                <search string="Product">
+                    <field name="reference"/>
+                    <field name="sender"/>
+                    <field name="date"/>
+                    <!--   add filter by (grouper par)  -->
+                    <separator/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+<!--                        <filter string="Livraison" name="livraison_ok" domain="[('livraison_ok', '=', 'oui')]"/>-->
+
+                    <!--   add group by (grouper par)  -->
+                    <group expand="1" string="Group By">
+                        <filter string="Logisticien" name="logisticien" domain="[]" context="{'group_by': 'logisticien'}"/>
+                        <filter string="Transporteur" name="transporteur" domain="[]" context="{'group_by':'transporteur'}"/>
+                    </group>
+
+                </search>
+            </field>
+    </record>
+
+
+    <record id="produit_view_kanban" model="ir.ui.view">
+        <field name="name">produit.view.kanban</field>
+        <field name="model">logistique.produit</field>
+        <field name="arch" type="xml">
+             <kanban class="o_kanban_mobile" sample="1">
+                <field name="reference"/>
+                <field name="sender"/>
+                <field name="date"/>
+                <field name="moyen_paiement"/>
+                <field name="frais_total"/>
+                <field name="logisticien"/>
+                <field name="activity_state"/>
+                 <field name="color"/>
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)}  oe_kanban_global_click">
+                            <div class="o_dropdown_kanban dropdown">
+                                 <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown">
+                                    <span class="fa fa-ellipsis-v"/>
+                                 </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable">
+                                        <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                    </t>
+                                    <t t-if="widget.deletable">
+                                        <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                    </t>
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section" />
+                                <ul>
+                                    <li>Reference: <field name="reference" /></li>
+                                    <li>Client: <field name="name" /></li>
+                                    <li>Total: <field name="frais_total" /></li>
+                                </ul>
+                            </div>
+                            <progressbar field="state" colors='{"devis": "danger", "bon": "warning", "payer": "success"}'/>
+                            <div>
+                                <field name="activity_ids" widget="kanban_activity"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+     <record id="view_logistique_produit_graph" model="ir.ui.view">
+        <field name="model">logistique.produit</field>
+        <field name="arch" type="xml">
+             <graph type="pie">
+                <field name="reference"/>
+                 <field name="sender"/>
+             </graph>
+        </field>
+    </record>
+
+    <record id="view_logistique_produit_pivot" model="ir.ui.view">
+         <field name="model">logistique.produit</field>
+         <field name="arch" type="xml">
+             <pivot>
+                 <field name="reference" type="row"/>
+                 <field name="sender" type="col"/>
+<!--                 <field name="destination" type="col"/>-->
+             </pivot>
+         </field>
+    </record>
+
+
+    <record id="logistique_produit_action" model="ir.actions.act_window">
+        <field name="name">produit</field>
+        <field name="res_model">logistique.produit</field>
+        <field name="view_mode">kanban,tree,form,search,graph,pivot</field>
+        <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Ajoutez une nouvelle produit
+              </p><p>
+                juste avec un clique verifiez et creez et confirmez les produits
+            des clients
+              </p>
+        </field>
+    </record>
+
+    <menuitem name="Logistique"
+              id="logistique_base_menu"/>
+
+
+    <menuitem name="Bon Commande"
+            id="logistique_menu"
+            parent="logistique_base_menu"
+            sequence="40"/>
+
+    <menuitem name="produit"
+              id="logistique_produit_menu"
+              parent="logistique_menu"
+              sequence="10"
+              action="logistique_produit_action"/>
+
+
+</odoo>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+      <record id="logistique_article_list_view" model="ir.ui.view">
+        <field name='name'>logistique.article.list.view</field>
+        <field name='model'>logistique.article</field>
+        <field name='arch' type='xml'>
+            <tree delete="0">
+                <field name='id_article'/>
+                <field name='name'/>
+                <field name='description'/>
+                <field name='quantity'/>
+                <field name='type'/>
+                <field name='barcode'/>
+                <field name='sale_price'/>
+                <field name='tax'/>
+                <field name='cost'/>
+                <field name="state"/>
+            </tree>
+        </field>
+      </record>
+
+      <record id="logistique_article_search_view" model="ir.ui.view">
+        <field name='name'>logistique.article.search.view</field>
+        <field name='model'>logistique.article</field>
+        <field name='arch' type='xml'>
+            <search string="Search articles">
+                <field name='id_article'/>
+                <field name="name"/>
+<!--                <separator/>-->
+<!--                <group expand="1" string="Group By">-->
+<!--                    <filter string="can be sold" name="can_be_sold" context="{'group_by': 'can_be_sold'}"/>-->
+<!--                    <filter string="can be rent" name="can_be_rent" context="{'group_by': 'can_be_rent'}"/>-->
+<!--                </group>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="logistique_article_kanban_view" model="ir.ui.view">
+        <field name="name">logistique.article.kanban.view</field>
+        <field name="model">logistique.article</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1">
+                <field name='id_article'/>
+                <field name='name'/>
+                <field name='quantity'/>
+                <field name='sale_price'/>
+                <field name="id"/>
+                <field name="image"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                            <div class="o_kanban_image d-none d-md-block"
+                                t-attf-style="background-image:url('#{kanban_image('logistique.article','image', record.id.raw_value)}')">
+<!--                                <img class="o_kanban_image_inner_pic" t-att-src="kanban_image('logistique.article','image', record.id.raw_value)"/>-->
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section" />
+                                <ul>
+                                    <li>Nom: <field name="name" /></li>
+                                    <li>Quantité: <field name="quantity" /></li>
+                                    <li>Prix: <field name="sale_price" /> FCFA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+      <record id="logistique_article_form_view" model="ir.ui.view">
+        <field name='name'>logistique.article.form.view</field>
+        <field name='model'>logistique.article</field>
+        <field name='arch' type='xml'>
+
+            <form>
+                <header>
+                    <button id="button_enregistre" name="action_enregistre" string="Enregistré" states="brouillon"
+                    class="btn-primary" type="object"/>
+                     <button id="button_brouillon" name="action_brouillon" string="Brouillon" states="annuler"
+                    class="btn-primary" type="object"/>
+                     <button id="button_annuler" name="action_annuler" string="Annuler" states="brouillon,enregistre"
+                     type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="brouillon,enregistre"/>
+                </header>
+                <sheet>
+                     <div class="oe_button_box" name="button_box">
+                         <button class="oe_stat_button" type="object" sequence="20" name="quantity_count"
+                            icon="fa-dropbox">
+                            <field string="Quantité" name="initial_quantity" widget="statinfo"/>
+                         </button>
+                         <button class="oe_stat_button" type="object" sequence="30" name="quantity_vendu"
+                            icon="fa-signal">
+                            <field string="Vendu" name="quantity_sold" widget="statinfo"/>
+                         </button>
+                         <button class="oe_stat_button" type="object" sequence="10" name="product_move"
+                            icon="fa-exchange">
+                            <field string="Mouvement produit" name="mouvement_produit" widget="statinfo"/>
+                         </button>
+                     </div>
+
+                    <field name="image" string="" widget="image"  col="120"  width="120" class="oe_avatar" options="{&quot;preview_image&quot;:&quot;image&quot;}"/>
+                    <div class="oe_title">
+                        <div>
+                            <h1>
+                                <field name="id_article" readonly="1"/>
+                            </h1>
+                        </div>
+                        <label class="oe_edit_only" for="name" string="Nom D'article"/>
+                        <h1>
+                            <field name="name" placeholder="Nom D'article"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Information Generale" name="general_information">
+                            <group column="2">
+                                <group colspan="1">
+                                    <field name="type"/>
+                                    <field name="barcode"/>
+                                    <field name="description"/>
+                                </group>
+                                <group colspan="1">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name='quantity'/>
+                                    <field name="tax"/>
+                                    <field name="sale_price" class="oe_inline"/>
+                                    <field name="cost" class="oe_inline"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'thread_level': 1}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+     <record id="logistique_article_action" model="ir.actions.act_window">
+        <field name="name">Article</field>
+        <field name="res_model">logistique.article</field>
+        <field name="view_mode">kanban,form,tree,search</field>
+         <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Creer un Article
+            </p><p>
+                Definisez un article en stock et precisez si cette
+             marchandise est consumable ou service.
+            </p>
+        </field>
+     </record>
+
+    <menuitem name="Logistique"
+ 	id="logistique_base_menu"/>
+
+    <menuitem name="Article"
+        id="logistique_article_menu"
+        parent="logistique_base_menu"
+        sequence="30"
+	    action="logistique_article_action"/>
+</odoo>

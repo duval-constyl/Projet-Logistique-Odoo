@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="suivre_search_view" model="ir.ui.view">
+        <field name='name'>suivre.search.view</field>
+        <field name='model'>logistique.suivre</field>
+        <field name='arch' type='xml'>
+            <search string="Search suivre">
+                <field name="reference_liv"
+                    filter_domain="[
+                        ('reference_liv', 'ilike', self),
+                        ('ref', '=', self)]"/>
+                <field name="reference_exp"
+                     filter_domain="[
+                        ('reference_exp', 'ilike', self),
+                        ('ref', '=', self)]"/>
+            </search>
+        </field>
+    </record>
+
+     <record id="logistique_suivre_view_tree" model="ir.ui.view">
+        <field name="name">logistique.suivre.view.tree</field>
+        <field name="model">logistique.suivre</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type"/>
+                <field name="date"/>
+                <field name="ville"/>
+                <field name="position"/>
+                <field name="reference_liv"/>
+                <field name="reference_exp"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="suivre_view_form" model="ir.ui.view">
+            <field name="name">suivre.view.form</field>
+            <field name="model">logistique.suivre</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1>
+                            Suivre
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="type"/>
+                                <field name="position"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="ville"/>
+                                <field name="reference_liv" attrs="{'invisible': [('type', '!=', 'livraison')]}"/>
+                                <field name="reference_exp" attrs="{'invisible': [('type', '!=', 'expedition')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record id="logistique_suivre_action" model="ir.actions.act_window">
+        <field name="name">Suivre</field>
+        <field name="res_model">logistique.suivre</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="suivre_search_view"/>
+    </record>
+
+    <menuitem name="Logistique"
+              id="logistique_base_menu"/>
+
+    <menuitem name="Entrepot"
+              id="logistique_tracking_menu"
+              parent="logistique_base_menu"
+              sequence="50"/>
+
+    <menuitem name="Suivre"
+              id="logistique_suivre_menu"
+              parent="logistique_tracking_menu"
+              sequence="30"
+              action="logistique_suivre_action"/>
+</odoo>

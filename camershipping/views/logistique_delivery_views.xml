@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="commandeline_view_tree" model="ir.ui.view">
+        <field name="name">commandeline.view.tree</field>
+        <field name="model">logistique.commandeline</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="delivery_id"/>
+                <field name="date"/>
+                <field name="moyen_paiement"/>
+                <field name="date_livraison"/>
+                <field name="sender"/>
+                <field name="logisticien"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name='quantity_ok'/>
+                <field name="vente"/>
+                <field name="sale_price"/>
+                <field name="frais_livraison"/>
+                <field name="frais_total"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="Delivery_view_form" model="ir.ui.view">
+            <field name="name">delivery.view.form</field>
+            <field name="model">logistique.delivery</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                          <h1>
+                              <field name="reference" readonly="1"/>
+                          </h1>
+                        </div>
+                        <notebook>
+                            <page string="Ligne de Commande">
+                                <field name="commandline_ids"
+                                    widget="section_and_note_one2many"
+                                    mode="tree">
+                                    <form>
+                                        <field name="delivery_id"/>
+                                        <field name="date"/>
+                                        <field name="moyen_paiement"/>
+                                        <field name="date_livraison"/>
+                                        <field name="sender"/>
+                                        <field name="logisticien"/>
+                                        <field name="name"/>
+                                        <field name="description"/>
+                                        <field name='quantity_ok'/>
+                                        <field name="vente"/>
+                                        <field name="sale_price"/>
+                                        <field name="frais_livraison"/>
+                                        <field name="frais_total"/>
+                                    </form>
+                                    <tree editable="bottom">
+                                        <field name="delivery_id"/>
+                                        <field name="date"/>
+                                        <field name="moyen_paiement"/>
+                                        <field name="date_livraison"/>
+                                        <field name="sender"/>
+                                        <field name="logisticien"/>
+                                        <field name="name"/>
+                                        <field name="description"/>
+                                        <field name='quantity_ok'/>
+                                        <field name="vente"/>
+                                        <field name="sale_price"/>
+                                        <field name="frais_livraison"/>
+                                        <field name="frais_total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_
+                        followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+    </record>
+
+
+     <record id="logistique_commandeline_view_form" model="ir.ui.view">
+            <field name="name">logistique.commandeline.view.form</field>
+            <field name="model">logistique.commandeline</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="delivery_id"/>
+                                <field name="date"/>
+                                <field name="moyen_paiement"/>
+                                <field name="date_livraison"/>
+                                <field name="sender"/>
+                                <field name="logisticien"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name='quantity_ok'/>
+                                <field name="vente"/>
+                                <field name="sale_price"/>
+                                <field name="frais_livraison"/>
+                                <field name="frais_total"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+      <record id="delivery_view_tree" model="ir.ui.view">
+        <field name="name">delivery.view.tree</field>
+        <field name="model">logistique.delivery</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="delivery_id"/>
+                <field name="date"/>
+                <field name="moyen_paiement"/>
+                <field name="date_livraison"/>
+                <field name="sender"/>
+                <field name="logisticien"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name='quantity_ok'/>
+                <field name="vente"/>
+                <field name="sale_price"/>
+                <field name="frais_livraison"/>
+                <field name="frais_total"/>
+            </tree>
+        </field>
+      </record>
+
+
+    <record id="logistique_delivery_action" model="ir.actions.act_window">
+        <field name="name">Delivery</field>
+        <field name="res_model">logistique.delivery</field>
+        <field name="view_mode">tree,form</field>
+         <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               Ajouter une nouvelle Livraison
+              </p><p>
+                Avec un click créez une nouvelle Livraison
+              </p>
+        </field>
+     </record>
+
+
+
+      <menuitem name="Logistique"
+                id="logistique_base_menu"/>
+
+        <menuitem name="Bon Commande"
+            id="logistique_menu"
+            parent="logistique_base_menu"
+            sequence="40"/>
+
+      <menuitem name=" Delivery"
+              id="logistique_delivery_menu"
+              parent="logistique_menu"
+              sequence="30"
+              action="logistique_delivery_action"/>
+</odoo>

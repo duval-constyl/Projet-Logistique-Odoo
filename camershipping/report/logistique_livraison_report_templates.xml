@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_logistique_livraison_id_detail">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.html_container">
+                    <t t-call="web.external_layout">
+                        <div>
+                            <div>
+                                <table class="table table-sm" style=" table-layout:fixed;">
+                                    <thead>
+                                        <tr>
+                                            <th width="30px"
+                                                style="background-color:#FF5722 !important;border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">
+                                                Reference Livraison
+                                            </th>
+                                            <th width="30px"
+                                                style="background-color:#FF5722 !important;border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">
+                                                Client
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                <div t-field="o.reference"/>
+                                            </td>
+                                            <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                <div t-field="o.sender"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <div>
+                                <table class="table table-sm" style=" table-layout:fixed;">
+                                    <thead>
+                                        <tr>
+                                            <th width="30px"
+                                                style="background-color:#FF5722 !important;border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">
+                                                Entrepot d'envoyeur
+                                            </th>
+                                            <th width="30px"
+                                                style="background-color:#FF5722 !important;border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">
+                                                Destination commande
+                                            </th>
+                                            <th width="30px"
+                                                style="background-color:#FF5722 !important;border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">
+                                                Date de livraison
+                                            </th>
+<!--                                            <th width="20px"-->
+<!--                                                style="background-color:#FF5722 !important;border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">-->
+<!--                                                Type Marchandise-->
+<!--                                            </th>-->
+<!--                                            <th width="20px"-->
+<!--                                                style="background-color:#FF5722 !important;border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">-->
+<!--                                                status-->
+<!--                                            </th>-->
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                <div t-field="o.envoyeur"/>
+                                            </td>
+                                            <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                <div t-field="o.destination"/>
+                                            </td>
+                                            <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                <div t-field="o.date_livraison"/>
+                                            </td>
+<!--                                            <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">-->
+<!--                                                <div t-field="o.type"/>-->
+<!--                                            </td>-->
+<!--                                            <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">-->
+<!--                                                <div t-field="o.state"/>-->
+<!--                                            </td>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div style="padding-top:20px;"></div>
+
+                                    <table class="table table-sm" >
+                                        <thead>
+                                            <tr>
+                                                <th style="background-color:#FF5722 !important;color:#FFF !important;">Commande</th>
+                                                <th style="background-color:#FF5722 !important;color:#FFF !important;">Date de la commande</th>
+                                                <th style="background-color:#FF5722 !important;color:#FFF !important;">Moyen de paiement</th>
+<!--                                                <th style="background-color:#FF0000 !important;color:#FFF !important;">Prix de vente</th>-->
+                                            </tr>
+                                        </thead>
+
+                                        <tbody t-foreach="o. commandline_ids"
+                                           t-as="line">
+                                            <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                                <td name="td_commande_id">
+                                                    <span t-field="line.commande_id"/>
+                                                </td>
+                                                <td name="td_date">
+                                                    <span t-field="line.date"/>
+                                                </td>
+<!--                                                <t t-if="line.barcode">-->
+<!--                                                    <td name="td_barcode">-->
+<!--                                                        <span t-field="line.barcode"/>-->
+<!--                                                    </td>-->
+<!--                                                </t>-->
+                                                <td name="td_moyen_paiement">
+                                                    <span t-field="line.moyen_paiement"/>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <div name="solde">
+                                <div class="col-xs-4 pull-right">
+                                    <table  class="table table-condensed">
+                                        <tr class="border-black" style=" background-color: green ; color:#fff !important;">
+                                            <td>
+                                                <strong>Prix total</strong>
+                                            </td>
+                                             <td class="text-right" style="color:#000">
+                                                <span t-field="o.total"
+                                                    t-field-options='{"widget": "monetary"}'/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div style="padding-top:50px;">
+                            </div>
+                            <br/>
+<!--                            <p t-if="o.description" class="font-weight-normal">-->
+<!--                                <strong>CONDITIONS GENERALES</strong>-->
+<!--                                <br/>-->
+<!--                                <br/>-->
+<!--                                <span t-field="o.description"/>-->
+<!--                            </p>-->
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
+
+
+

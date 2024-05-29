@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+          <record id="blog1" model="logistique.blog">
+<!--                <field name="date">05/07/2022</field>-->
+                <field name="title">La société africaine de logistique Lori Systems lève un financement de pré-série B auprès de Google</field>
+                <field name="description">Lori Systems, une société africaine de logistique numérique, a récemment obtenu un montant d’investissement non divulgué de Google, le troisième investissement de ce type de Google sur le continent. </field>
+                <field name="image" type="base64" file="camershipping/static/img/road.jpg"/>
+          </record>
+          <record id="blog2" model="logistique.blog">
+<!--                <field name="date">07/22/2022</field>-->
+                <field name="title">La société Américain de logistique Lori</field>
+                <field name="description">Lori Systems, une société africaine de logistique numérique, a récemment obtenu un montant d’investissement non divulgué de Google, le troisième investissement de ce type de Google sur le continent. </field>
+                <field name="image" type="base64" file="camershipping/static/img/road.jpg"/>
+          </record>
+          <record id="blog3" model="logistique.blog">
+<!--                <field name="date">08/07/2022</field>-->
+                <field name="title">Systems lève un financement de pré-série B auprès de Google</field>
+                <field name="description">Lori Systems, une société africaine de logistique numérique, a récemment obtenu un montant d’investissement non divulgué de Google, le troisième investissement de ce type de Google sur le continent. </field>
+                <field name="image" type="base64" file="camershipping/static/img/road.jpg"/>
+          </record>
+    </data>
+</odoo>

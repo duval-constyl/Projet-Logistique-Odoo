@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+     <record id="commexpe_view_tree" model="ir.ui.view">
+        <field name="name">commexpe.view.tree</field>
+        <field name="model">logistique.commexpe</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type_colis"/>
+                <field name="transport_means"/>
+                <field name="mass"/>
+                <field name="volume"/>
+                <field name="height"/>
+                <field name="poids"/>
+                <field name="qty"/>
+                <field name="prix"/>
+                <field name="sub_total"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="commexpe_view_kanban" model="ir.ui.view">
+         <field name="name">commexpe.view.kanban</field>
+         <field name="model">logistique.commexpe</field>
+         <field name="arch" type="xml">
+             <kanban class="o_kanban_mobile" sample="1">
+                 <field name="type_colis"/>
+                <field name="transport_means"/>
+                <field name="mass"/>
+                <field name="volume"/>
+                <field name="height"/>
+                <field name="poids"/>
+                <field name="qty"/>
+                <field name="prix"/>
+                <field name="sub_total"/>
+                 <field name="id"/>
+                 <templates>
+                     <t t-name="kanban-box">
+                         <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section" />
+                                <ul>
+                                    <li>Type colis: <field name="type_colis"/></li>
+                                    <li>Quantité: <field name="qty"/></li>
+                                    <li>Poids: <field name="poids"/></li>
+                                    <li>Total: <field name="sub_total"/></li>
+                                </ul>
+                            </div>
+                         </div>
+                     </t>
+                 </templates>
+             </kanban>
+         </field>
+    </record>
+
+
+    <record id="commexpe_view_form" model="ir.ui.view">
+        <field name="name">commexpe.view.form</field>
+        <field name="model">logistique.commexpe</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="type_colis"/>
+                            <field name="mass"/>
+                            <field name="volume"/>
+                            <field name="poids"/>
+                            <field name="height"/>
+                        </group>
+                        <group>
+                            <field name="transport_means"/>
+                             <field name="qty"/>
+                            <field name="prix"/>
+                            <field name="sub_total"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+     <record id="logistique_commexpedition_action" model="ir.actions.act_window">
+        <field name="name">Comm_Expedition</field>
+        <field name="res_model">logistique.commexpe</field>
+        <field name="view_mode">tree, kanban, form</field>
+         <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               Ajouter une nouvelle Expedition
+              </p><p>
+                Avec un click créez une nouvelle expedition
+              </p>
+        </field>
+     </record>
+
+    <menuitem name="Logistique"
+              id="logistique_base_menu"/>
+
+    <menuitem name="Entrepot"
+              id="logistique_tracking_menu"
+              parent="logistique_base_menu"
+              sequence="50"/>
+
+    <menuitem name="comm_Expedition"
+              id="logistique_comm_Expedition_menu"
+              parent="logistique_tracking_menu"
+              sequence="50"
+              action="logistique_commexpedition_action"/>
+
+</odoo>

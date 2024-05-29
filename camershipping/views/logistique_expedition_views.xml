@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+     <record id="commande_view_tree" model="ir.ui.view">
+        <field name="name">commande.view.tree</field>
+        <field name="model">logistique.commexpe</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type_colis"/>
+                <field name="transport_means"/>
+                <field name="mass"/>
+                <field name="volume"/>
+                <field name="height"/>
+                <field name="poids"/>
+                <field name="qty"/>
+                <field name="prix"/>
+                <field name="sub_total"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="commande_view_form" model="ir.ui.view">
+        <field name="name">commande.view.form</field>
+        <field name="model">logistique.commexpe</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="type_colis"/>
+                            <field name="mass"/>
+                            <field name="volume"/>
+                            <field name="poids"/>
+                            <field name="height"/>
+                        </group>
+                        <group>
+                            <field name="transport_means"/>
+                             <field name="qty"/>
+                            <field name="prix"/>
+                            <field name="sub_total"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="expedition_view_form" model="ir.ui.view">
+            <field name="name">expedition.view.form</field>
+            <field name="model">logistique.expedition</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                         <button id="button_valider" name="action_valider" string="Valider" states="en_cours"
+                             class="btn-primary" type="object"/>
+                        <button id="button_payer" name="action_payer" string="Payez" states="valider"
+                             class="btn-primary" type="object"/>
+                        <button id="button_send" name="action_send" string="Envoyer pars mail" states="valider,payer,telephone"
+                             class="btn-primary" type="object" icon="fa-envelope"/>
+                        <button id="button_telephone" name="action_telephone" string="Ecrire au Destinateur" states="valider,payer,send"
+                             class="btn-primary" type="object" icon="fa-whatsapp"/>
+                        <button id="button_en_cours" name="action_en_cours" string="Definir en cours" states="annuler"
+                             class="btn-primary" type="object"/>
+                         <button id="button_annuler" name="action_annuler" string="Annuler" states="en_cours,valider"
+                             type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="en_cours,valider,send,payer,telephone"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                             <button name="action_expedition_move" class="oe_stat_button" icon="fa-truck" type="object">
+                                <field string="Expedition" name="expedition" widget="statinfo"/>
+                            </button>
+                            <button class="oe_stat_button" type="object" name="compte_total"
+                                icon="fa-money">
+                                <field string="Compte Total" name="total_count" widget="statinfo"/>
+                            </button>
+                             <button class="oe_stat_button" type="object" name="action_operartion_move"
+                                icon="fa-arrows-v">
+                                <field string="Operation" name="operation" widget="statinfo"/>
+                            </button>
+                        </div>
+                         <widget name="web_ribbon" title="Payer" bg_color="bg-success" attrs="{'invisible': [('state', '!=', 'payer')]}"/>
+                        <!-- ruban de l'archivage -->
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <div class="oe_title">
+                          <h1>
+                              <field name="reference" readonly="1"/>
+                          </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date_enres"/>
+                                <field name="sender" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <field name="name" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <field name="telephone" widget="phone" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <field name="envoyer" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                            </group>
+                            <group>
+                                <field name="destination" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <field name="moyen_transport" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <field name="moyen_paiement" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <field name="frais_total" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="active" invisible="1"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                                <page string="Information Expedition" name="expedition">
+                                    <group column="2">
+                                        <group colspan="1">
+                                            <field name="date_livraison" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+<!--                                            <field name="heure_depart" attrs="{'readonly': [('state', '=', 'payer')]}"/>-->
+                                            <field name="heure_pickup" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                        </group>
+                                        <group colspan="1">
+                                            <field name="logisticien" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                        </group>
+                                    </group>
+                                </page>
+                                <page string="Article à Expédier">
+                                    <field name="expedition_ids"
+                                            widget="section_and_note_one2many"
+                                            mode="tree" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}">
+                                            <form>
+                                                    <field name="type_colis"/>
+                                                    <field name="transport_means"/>
+                                                    <field name="mass"/>
+                                                    <field name="volume"/>
+                                                    <field name="height"/>
+                                                    <field name="poids"/>
+                                                    <field name="qty"/>
+                                                    <field name="prix"/>
+                                                    <field name="sub_total"/>
+                                            </form>
+                                            <tree editable="bottom">
+                                                    <field name="type_colis"/>
+                                                    <field name="transport_means"/>
+                                                    <field  name="mass"/>
+                                                    <field name="volume"/>
+                                                    <field name="height"/>
+                                                    <field name="poids"/>
+                                                    <field name="qty"/>
+                                                    <field name="prix"/>
+                                                    <field name="sub_total"/>
+                                            </tree>
+                                    </field>
+                                </page>
+                                <page string="Information Destinateur" name="expedition">
+                                    <group column="2">
+                                        <group colspan="1">
+                                            <field name="names" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                            <field name="email" widget="email" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                            <field name='phone' widget="phone" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                            <field name='card_id' attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                        </group>
+                                        <group colspan="1">
+                                             <field name="adresse" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                             <field name="zip" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                             <field name="city" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                             <field name="nationality" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                        </group>
+                                    </group>
+                                </page>
+                        </notebook>
+
+                        <group name="note_group" col="6" class="mt-2 mt-md-0">
+                            <group colspan="4">
+                                <field name="condition" nolabel="1" placeholder="Condition générale..." attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="total">
+                                <field name="frais_total" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <field name="prix_commande" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="total"/>
+                                </div>
+                                <field name="total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" decoration-bf="1" attrs="{'readonly': [('state', 'in', ['payer', 'send'])]}"/>
+                            </group>
+                            <div class="oe_clear"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_
+                        followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+     </record>
+
+     <record id="expeditionn_view_tree" model="ir.ui.view">
+        <field name="name">expedition.view.tree</field>
+        <field name="model">logistique.expedition</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="sender"/>
+                <field name="envoyer"/>
+                <field name="destination"/>
+                <field name="moyen_transport"/>
+                <field name="moyen_paiement"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+
+
+     <record id="expeditionn_view_kanban" model="ir.ui.view">
+        <field name="name">expedition.view.kanban</field>
+        <field name="model">logistique.expedition</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1" default_group_by="state">
+                <field name="reference"/>
+                <field name="sender"/>
+                <field name="envoyer"/>
+                <field name="destination"/>
+                <field name="moyen_transport"/>
+                <field name="moyen_paiement"/>
+                <field name="total"/>
+                <field name="name"/>
+                <field name="activity_state"/>
+                <field name="color"/>
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)}  oe_kanban_global_click">
+                            <div class="o_dropdown_kanban dropdown">
+                                 <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown">
+                                    <span class="fa fa-ellipsis-v"/>
+                                 </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable">
+                                        <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                    </t>
+                                    <t t-if="widget.deletable">
+                                        <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                    </t>
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section" />
+                                <ul>
+                                    <li>Reference: <field name="reference" /></li>
+                                    <li>Client: <field name="name" /></li>
+                                    <li>Destinateur: <field name="names" /></li>
+                                    <li>Moyen de transport: <field name="moyen_transport"/></li>
+                                    <li>Total: <field name="total"/>FCFA</li>
+                                </ul>
+                            </div>
+                            <progressbar field="state" colors='{"en_cours": "danger", "valider": "warning", "payer": "success", "send": "primary"}'/>
+                            <div>
+                                <field name="activity_ids" widget="kanban_activity"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="expedition_search" model="ir.ui.view">
+            <field name="name">expedition.view.search</field>
+            <field name="model">logistique.expedition</field>
+            <field name="arch" type="xml">
+                <search string="Expedition">
+                    <field name="reference"/>
+                    <field name="sender"/>
+                    <field name="names"/>
+                    <!--   add filter by (grouper par)  -->
+                    <separator/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+<!--                        <filter string="Livraison" name="livraison_ok" domain="[('livraison_ok', '=', 'oui')]"/>-->
+
+                    <!--   add group by (grouper par)  -->
+                    <group expand="1" string="Group By">
+                        <filter string="Moyen de transport" name="transport_means" domain="[]" context="{'group_by': 'transport_means'}"/>
+                        <filter string="Logisticien" name="logisticien" domain="[]" context="{'group_by': 'logisticien'}"/>
+                        <filter string="Entrepot Envoyeur" name="envoyer" domain="[]" context="{'group_by': 'envoyer'}"/>
+                        <filter string="Entrepot Destiné" name="destination" domain="[]" context="{'group_by': 'destination'}"/>
+                    </group>
+
+                </search>
+            </field>
+    </record>
+
+    <record id="view_expedition_calendar" model="ir.ui.view">
+        <field name="model">logistique.expedition</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_livraison" >
+                <field name="sender"/>
+                <field name="names"/>
+            </calendar>
+        </field>
+    </record>
+
+
+     <record id="logistique_expedition_action" model="ir.actions.act_window">
+        <field name="name">Expedition</field>
+        <field name="res_model">logistique.expedition</field>
+        <field name="view_mode">kanban,form,search,tree,calendar</field>
+         <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               Ajouter une nouvelle Expedition
+              </p><p>
+                Avec un click créez une nouvelle expedition
+              </p>
+        </field>
+     </record>
+
+    <menuitem name="Logistique"
+              id="logistique_base_menu"/>
+
+    <menuitem name="Entrepot"
+              id="logistique_tracking_menu"
+              parent="logistique_base_menu"
+              sequence="50"/>
+
+    <menuitem name="Expedition"
+              id="logistique_expedition_menu"
+              parent="logistique_tracking_menu"
+              sequence="20"
+              action="logistique_expedition_action"/>
+
+</odoo>

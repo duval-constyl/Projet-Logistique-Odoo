@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="article1" model="logistique.article">
+            <field name="name">Baffle</field>
+            <field name="description">Baffle ultra song</field>
+            <field name="barcode">BC057</field>
+            <field name="sale_price">150000</field>
+            <field name="quantity">7</field>
+            <field name="image" type="base64" file="camershipping/static/img/baffle.png"/>
+        </record>
+         <record id="article2" model="logistique.article">
+            <field name="name">Chaise</field>
+            <field name="description">Canapé pour salon</field>
+            <field name="barcode">BC087</field>
+            <field name="sale_price">250000</field>
+            <field name="quantity">5</field>
+            <field name="image" type="base64" file="camershipping/static/img/chaise.png"/>
+        </record>
+         <record id="article3" model="logistique.article">
+            <field name="name">Climatiseur</field>
+            <field name="description">Climatiseur MACAT complet</field>
+            <field name="barcode">BC007</field>
+            <field name="sale_price">100000</field>
+            <field name="quantity">7</field>
+            <field name="image" type="base64" file="camershipping/static/img/climatiseur.png"/>
+        </record>
+         <record id="article4" model="logistique.article">
+            <field name="name">Cuisiniere</field>
+            <field name="description">Plaque à gas</field>
+            <field name="barcode">BC004</field>
+            <field name="sale_price">180000</field>
+            <field name="quantity">7</field>
+            <field name="image" type="base64" file="camershipping/static/img/cuisiniere.jpg"/>
+        </record>
+         <record id="article5" model="logistique.article">
+            <field name="name">Iphone</field>
+            <field name="description">Iphone XSMax</field>
+            <field name="barcode">BC050</field>
+            <field name="sale_price">200000</field>
+            <field name="quantity">10</field>
+            <field name="image" type="base64" file="camershipping/static/img/iphone.png"/>
+        </record>
+         <record id="article6" model="logistique.article">
+            <field name="name">Mixeur</field>
+            <field name="description">Mix tout</field>
+            <field name="barcode">BC047</field>
+            <field name="sale_price">20000</field>
+            <field name="quantity">20</field>
+            <field name="image" type="base64" file="camershipping/static/img/mixeur.png"/>
+        </record>
+         <record id="article7" model="logistique.article">
+            <field name="name">Moto</field>
+            <field name="description">Moto GP</field>
+            <field name="barcode">BC002</field>
+            <field name="sale_price">1500000</field>
+            <field name="quantity">3</field>
+            <field name="image" type="base64" file="camershipping/static/img/moto.jpg"/>
+        </record>
+         <record id="article8" model="logistique.article">
+            <field name="name">Ordinateur</field>
+            <field name="description">Pc Professionnel</field>
+            <field name="barcode">BC084</field>
+            <field name="sale_price">600000</field>
+            <field name="quantity">12</field>
+            <field name="image" type="base64" file="camershipping/static/img/ordi.png"/>
+        </record>
+         <record id="article9" model="logistique.article">
+            <field name="name">Table</field>
+            <field name="description">Table ronde 4 plc</field>
+            <field name="barcode">BC009</field>
+            <field name="sale_price">25000</field>
+            <field name="quantity">7</field>
+            <field name="image" type="base64" file="camershipping/static/img/table.png"/>
+        </record>
+         <record id="article10" model="logistique.article">
+            <field name="name">Télévision</field>
+            <field name="description">Télévision sharp</field>
+            <field name="barcode">BC084</field>
+            <field name="sale_price">350000</field>
+            <field name="quantity">6</field>
+            <field name="image" type="base64" file="camershipping/static/img/television.png"/>
+        </record>
+         <record id="article11" model="logistique.article">
+            <field name="name">Ventilateur</field>
+            <field name="description">Ventilateur simple</field>
+            <field name="barcode">BC047</field>
+            <field name="sale_price">15000</field>
+            <field name="quantity">20</field>
+            <field name="image" type="base64" file="camershipping/static/img/ventilateur.jpg"/>
+        </record>
+        <record id="article12" model="logistique.article">
+            <field name="name">Voiture</field>
+            <field name="description">Voiture rouge </field>
+            <field name="barcode">BC051</field>
+            <field name="sale_price">25000000</field>
+            <field name="quantity">5</field>
+            <field name="image" type="base64" file="camershipping/static/img/voiture.png"/>
+        </record>
+    </data>
+</odoo>

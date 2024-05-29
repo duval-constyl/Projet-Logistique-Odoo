@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_logistique_expedition_id_detail">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.html_container">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div name="solde">
+                                <div class="col-xs-4 pull-right">
+                                    <h3 style="text-decoration: underline !important">Destinateur</h3>
+                                     <div>
+                                        <strong>Nom:  </strong>
+                                        <span t-field="o.names"/>
+                                     </div>
+                                     <div>
+                                        <strong>Téléphone:  </strong>
+                                        <span t-field="o.phone"/>
+                                     </div>
+                                    <div>
+                                        <strong>Numero CNI:  </strong>
+                                        <span t-field="o.card_id"/>
+                                     </div>
+                                    <div>
+                                        <strong>Email:  </strong>
+                                        <span t-field="o.email"/>
+                                     </div>
+                                    <div>
+                                        <strong>Adresse:  </strong>
+                                        <span t-field="o.adresse"/>
+                                     </div>
+                                </div>
+                            </div>
+
+                            <div style="padding-top:100px;"></div>
+
+                            <h2>
+                                <span t-field="o.reference"/>
+                            </h2>
+                            <div>
+                                <strong style="font-weight: bold !important,font-size: 16px !important">Entrepot D'envoie: </strong>
+                                <span t-field="o.envoyer"/>
+                            </div>
+                            <div>
+                                <strong style="font-weight: bold !important,font-size: 16px !important">Entrepot Destination: </strong>
+                                <span t-field="o.destination"/>
+                            </div>
+
+                            <div style="padding-top:10px;"></div>
+
+                            <div>
+                                <strong style="font-weight: bold !important,font-size: 16px !important">Nom Envoyeur: </strong>
+                                <span t-field="o.sender.name"/>
+                            </div>
+                            <div>
+                                <strong style="font-weight: bold !important,font-size: 16px !important">Téléphone Envoyeur: </strong>
+                                <span t-field="o.sender.telephone"/>
+                            </div>
+
+                            <div style="padding-top:10px;"></div>
+
+                             <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="background-color:blue !important;color:#FFF !important;">Type de Marchandise</th>
+                                        <th style="background-color:blue !important;color:#FFF !important;">Moyen de transport</th>
+                                        <th style="background-color:blue !important;color:#FFF !important;">Poids</th>
+                                        <th style="background-color:blue !important;color:#FFF !important;">Prix unitaire</th>
+                                        <th style="background-color:blue !important;color:#FFF !important;">Quantité</th>
+                                        <th style="background-color:blue !important;color:#FFF !important;">Sub_total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <t t-set="marchandises" t-value="o.expedition_ids"/>
+                                        <tr t-foreach="marchandises" t-as="marchandise" t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                                <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                    <div t-field="marchandise.type_colis"/>
+                                                </td>
+                                                <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                    <div t-field="marchandise.transport_means"/>
+                                                </td>
+                                                <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                    <div t-field="marchandise.poids"/>
+                                                </td>
+                                                <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                    <div t-field="marchandise.prix"/>
+                                                </td>
+                                                <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                    <div t-field="marchandise.qty"/>
+                                                </td>
+                                                <td style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                                    <div t-field="marchandise.sub_total"/>
+                                                </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="padding-top:10px;"></div>
+
+                            <div name="solde">
+                                    <div class="col-xs-4 pull-right">
+                                        <table  class="table table-condensed">
+                                            <tr class="border-black" style=" background-color: blue ; color:#fff !important;">
+                                                <td>
+                                                    <strong style="color:#fff !important;">Prix total:  </strong>
+                                                </td>
+                                                <td class="text-right" style="color:#fff">
+                                                    <span t-field="o.total"
+                                                        t-field-options='{"widget": "monetary"}'/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                            </div>
+
+                            <div style="padding-top:30px;"></div>
+                             <div>
+                                <strong>Date d'expedition:</strong>
+                                <span t-field="o.date_livraison"/>
+                            </div>
+                            <div>
+                                <strong>Frais d'envoie:</strong>
+                                <span t-field="o.frais_total"/>
+                            </div>
+                            <div>
+                                <strong>Responsable cs_shipping: </strong>
+                                <span t-field="o.logisticien"/>
+                            </div>
+
+                            <div style="padding-top:70px;"></div>
+
+                            <div class="col-xs-4 pull-right">
+                                 <strong>Fait le  </strong>
+                                <span t-field="o.date_enres"/>
+                            </div>
+
+                            <div style="padding-top:200px;"></div>
+
+                            <div class="col-xs-1 text-center">
+                                 <strong>Nous pouvons le faire</strong>
+                            </div>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
+
+
+

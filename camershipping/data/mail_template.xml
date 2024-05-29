@@ -1,0 +1,72 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<!--<odoo>-->
+<!--    <template id="expedition_qweb">-->
+<!--        <p>Dear <span t-field="object.sender"/>,</p>-->
+<!--        <p>You have accepted chose our agence to send your article to-->
+<!--            <b>-->
+<!--                <span t-field="object.name"/>-->
+<!--            </b> on the <span t-field="object.date_livraison"/>-->
+<!--            <br/>-->
+<!--                Therefore the article will be available for the receiver on the-->
+<!--                <b style="color:red;">-->
+<!--                    <span t-field="object.heure_depart"/>-->
+<!--                </b>-->
+<!--        </p>-->
+<!--         <br/>-->
+<!--         <p>Best regards,-->
+<!--            <br/>-->
+<!--            Cameroon-->
+<!--         </p>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+<odoo noupdate="1">
+<!--    <record id="expedition_qweb" model="mail.template">-->
+<!--        <field name="name">Expedition Return</field>-->
+<!--        <field name="email_from">${object.user_id.email_formatted |safe}</field>-->
+<!--        <field name="email_to">${object.email}</field>-->
+<!--        <field name="subject">Reminder for book return</field>-->
+<!--        <field name="model_id" ref="camershipping.model_logistique_expedition"/>-->
+<!--         <field name="body_html">-->
+<!--             <![CDATA[-->
+<!--                 <p>Dear ${object.sender},</p>-->
+<!--                 <p>You have accepted chose our agence to send your article to-->
+<!--                 <b>${object.name}</b> on the-->
+<!--                ${format_date(object.date_livraison)}-->
+<!--                 <br/>-->
+<!--                 Therefore the article will be available for the receiver on the <b style="color:red;">${format_date(object.heure_depart)}.</b>-->
+<!--                 </p>-->
+<!--                 <br/>-->
+<!--                 <p>Best regards,-->
+<!--                 <br/> Cameroon</p>-->
+<!--             ]]>-->
+<!--         </field>-->
+<!--&lt;!&ndash;        <field name="report_template" ref="cs_shipping.report_logistique_expedition_id_detail"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="report_name">Card Expedition_${(object.reference)}</field>&ndash;&gt;-->
+<!--    </record>-->
+
+    <record id="email_template_expedition" model="mail.template">
+            <field name="name">Expedition: Send by email</field>
+            <field name="model_id" ref="camershipping.model_logistique_expedition"/>
+            <field name="email_from">${object.user_id.email_formatted |safe}</field>
+            <field name="email_to">${object.sender.email}</field>
+            <field name="subject">Card Expedition(Ref ${object.reference})</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear ${object.sender},
+                         <p>You have accepted chose our agence to send your article to
+                         <b>${object.name}</b> on the ${format_date(object.date_livraison)}
+                         <br/>
+                         Therefore the article will be available for the receiver on the <b style="color:red;">${format_date(object.heure_depart)}.</b>
+                         </p>
+                         <br/>
+                         <p>Best regards,
+                         <br/> Cameroon</p>
+                     </p>
+                </div>
+            </field>
+<!--            <field name="report_template" ref="cs_shipping.report_logistique_expedition_id_detail"/>-->
+<!--            <field name="report_name">Card Expedition_${(object.reference)}</field>-->
+    </record>
+</odoo>
